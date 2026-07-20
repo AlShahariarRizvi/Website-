@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Condomart - The leading discreet sexual wellness and pharmacy store in Chattogram, Bangladesh. Order condoms, lubricants, and personal care with 100% private packaging.">
+    <meta name="keywords" content="sexual wellness Chattogram, buy condoms Bangladesh, online pharmacy Chattogram, discreet delivery, personal care Bangladesh">
+    <meta name="robots" content="index, follow">
+    <title>Condomart | Discreet Sexual Wellness & Pharmacy Chattogram</title>
+    <!-- FontAwesome for accessible vector iconography -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Core UI stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Target/Skip Anchor for Keyboard Navigation Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Top Privacy Notice & Location Ribbon -->
+    <div class="top-bar">
+        <div class="container top-bar-container">
+            <div class="marquee-track" aria-label="Announcement">
+                <span class="marquee-text">আপনার ব্যক্তিগত মুহূর্তগুলোকে করুন আরও আনন্দময় &nbsp; • &nbsp; ১০০% ডিস্ক্রিট ডেলিভারি &nbsp; • &nbsp; প্লেইন বক্স প্যাকেজিং &nbsp; • &nbsp; চট্টগ্রামে এক্সপ্রেস শিপিং &nbsp; • &nbsp; আপনার ব্যক্তিগত মুহূর্তগুলোকে করুন আরও আনন্দময়</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Area -->
+    <header class="main-header" id="main-header">
+        <div class="container header-container">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="main-nav">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <a href="#" class="logo" aria-label="Condomart Home">
+                <span class="logo-accent">Condo</span>mart
+            </a>
+
+            <!-- High Visibility Search bar -->
+            <div class="search-container">
+                <form class="search-form" id="searchForm" role="search" onsubmit="event.preventDefault();">
+                    <label for="searchInput" class="visually-hidden">Search sexual wellness products</label>
+                    <input type="search" id="searchInput" placeholder="Search brands, types, or care products..." aria-label="Search through site products">
+                    <button type="submit" aria-label="Submit Search"><i class="fas fa-search" aria-hidden="true"></i></button>
+                </form>
+            </div>
+
+            <!-- Subtle Privacy-First Utility Icons -->
+            <div class="header-utilities">
+                <a href="javascript:void(0)" class="utility-link" id="accountButton" aria-label="User Account Profile">
+                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                    <span class="utility-text" id="accountText">Account</span>
+                </a>
+                <a href="javascript:void(0)" class="utility-link" id="wishlistButton" aria-label="Wishlist">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                    <span class="cart-badge" id="wishlistBadge" style="display:none;">0</span>
+                    <span class="utility-text">Wishlist</span>
+                </a>
+                <a href="javascript:void(0)" class="utility-link cart-link" id="cartButton" aria-label="Shopping Cart, 0 items">
+                    <div class="cart-icon-wrapper">
+                        <i class="fas fa-shopping-basket" aria-hidden="true"></i>
+                        <span class="cart-badge" id="cartBadge" aria-live="polite">0</span>
+                    </div>
+                    <span class="utility-text">Basket</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Drawer -->
+    <nav class="main-nav" id="mainNav" aria-label="Primary Navigation">
+        <div class="container navigation-container">
+            <ul class="nav-links">
+                <li><a href="#" class="nav-item active" data-category="all">All Products</a></li>
+                <li><a href="#" class="nav-item" data-category="condoms">Condoms</a></li>
+                <li><a href="#" class="nav-item" data-category="lubricants">Lubricants & Gels</a></li>
+                <li><a href="#" class="nav-item" data-category="contraceptive">Contraceptive & Test Kits</a></li>
+                <li><a href="#" class="nav-item" data-category="delay">Delay Sprays</a></li>
+                <li><a href="#" class="nav-item" data-category="pills">Pills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Structural Node -->
+    <main id="main-content">
+        
+        <!-- Reassuring Hero Banner Section -->
+        <section class="hero-section" aria-labelledby="hero-title">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-tagline">Premium Health & Wellness Logistics</span>
+                    <h1 id="hero-title">Discreet, Fast, & Secure Delivery across Chattogram</h1>
+                    <p>Access trusted wellness Essentials without compromising your personal space. Orders are delivered in completely unbranded boxes with total privacy guaranteed.</p>
+                    <div class="hero-cta-group">
+                        <a href="#products-showcase" class="btn btn-primary">Shop Confidential</a>
+                        <a href="#privacy-guarantee" class="btn btn-secondary">Our Privacy Promise</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Standard modern graphic placeholder using architectural CSS layouts -->
+                    <div class="secure-box-graphic">
+                        <i class="fas fa-box-open box-icon"></i>
+                        <span class="badge-verified"><i class="fas fa-check-circle"></i> 100% Genuine</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Proposition Architecture -->
+        <section class="value-props" id="privacy-guarantee" aria-label="Value Propositions">
+            <div class="container props-grid">
+                <div class="prop-card">
+                    <div class="prop-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+                    <h3>100% Private Packaging</h3>
+                    <p>No product names, store logos, or indicators listed on the outside wrapper.</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-icon"><i class="fas fa-shipping-fast" aria-hidden="true"></i></div>
+                    <h3>Express Chattogram Shipping</h3>
+                    <p>Rapid dispatch locally within Chattogram municipal zones directly to your doorstep.</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
+                    <h3>Secure & Discreet Checkout</h3>
+                    <p>Encrypted transaction platforms with highly confidential records management.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modular Category Navigation Grid -->
+        <section class="categories-section" aria-labelledby="categories-title">
+            <div class="container">
+                <h2 id="categories-title" class="section-title">Shop by Specialized Category</h2>
+                <div class="categories-grid">
+                    <button class="category-card" data-category="condoms" aria-label="View Condoms Category">
+                        <i class="fas fa-layer-group" aria-hidden="true"></i>
+                        <span>Condoms</span>
+                    </button>
+                    <button class="category-card" data-category="lubricants" aria-label="View Lubricants & Gels Category">
+                        <i class="fas fa-water" aria-hidden="true"></i>
+                        <span>Lubricants & Gels</span>
+                    </button>
+                    <button class="category-card" data-category="contraceptive" aria-label="View Contraceptive & Test Kits Category">
+                        <i class="fas fa-vial" aria-hidden="true"></i>
+                        <span>Contraceptive & Test Kits</span>
+                    </button>
+                    <button class="category-card" data-category="delay" aria-label="View Delay Sprays Category">
+                        <i class="fas fa-spray-can" aria-hidden="true"></i>
+                        <span>Delay Sprays</span>
+                    </button>
+                    <button class="category-card" data-category="pills" aria-label="View Pills Category">
+                        <i class="fas fa-pills" aria-hidden="true"></i>
+                        <span>Pills</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Dynamic Loop Showcase Grid -->
+        <section class="products-section" id="products-showcase" aria-labelledby="products-title">
+            <div class="container">
+                <div class="products-header">
+                    <h2 id="products-title" class="section-title">Featured Wellness Essentials</h2>
+                    <p class="results-count" id="resultsCount">Showing all curated items</p>
+                </div>
+                
+                <!-- Dynamic Target Grid Container -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Standard Client-side Render Fallback Container inside JavaScript File -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SEO-Optimized Footer & FAQ Assembly -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <span class="footer-logo"><span class="logo-accent">Condo</span>mart</span>
+                <p class="footer-description">
+                    Condomart is Chattogram's premier localized sexual health platform, providing private accessibility to international and verified domestic wellness brands.
+                </p>
+                <p class="footer-location"><i class="fas fa-map-marker-alt"></i> Serving Hub: GEC Circle / Agrabad, Chattogram, Bangladesh.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Customer Support</h3>
+                <ul>
+                    <li><a href="#">Help & FAQs</a></li>
+                    <li><a href="#">Discreet Shipping Guide</a></li>
+                    <li><a href="#">Return & Refund Architecture</a></li>
+                    <li><a href="#">Contact Support Desk</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-faq" id="faq-section">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item">
+                    <h4>How does delivery privacy operate?</h4>
+                    <p>All items are placed inside standard padded mailer bags or brown generic boxes. Courier labels indicate 'Healthcare Essentials', keeping the itemized breakdown confidential.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What is the delivery window within Chattogram?</h4>
+                    <p>Standard priority deliveries within central zones are completed quickly to match rapid local routing standards.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Condomart Bangladesh. All rights reserved safely.</p>
+                <div class="payment-badges" aria-label="Accepted Payments">
+                    <i class="fab fa-cc-visa" title="Visa Payment Integration Ready"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard Accepted"></i>
+                    <span class="cod-badge">Cash on Delivery Available</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Account Login / Register Modal -->
+    <div class="modal-overlay" id="accountModal">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle">
+            <button class="modal-close" id="accountModalClose" aria-label="Close"><i class="fas fa-times"></i></button>
+            <h2 id="accountModalTitle">Welcome to Condomart</h2>
+            <p class="modal-sub">Your details stay 100% private & discreet.</p>
+
+            <form id="accountForm">
+                <label for="accName">Full Name</label>
+                <input type="text" id="accName" required placeholder="Your name">
+
+                <label for="accEmail">Email</label>
+                <input type="email" id="accEmail" required placeholder="you@example.com">
+
+                <label for="accPass">Password</label>
+                <input type="password" id="accPass" required placeholder="Create a password" minlength="4">
+
+                <button type="submit" class="btn btn-primary modal-submit" id="accountSubmit">Create Account</button>
+            </form>
+
+            <p class="modal-toggle">
+                <span id="accountToggleText">Already have an account?</span>
+                <a href="javascript:void(0)" id="accountToggle">Login</a>
+            </p>
+
+            <div class="admin-hint">
+                <a href="admin.html">Store Admin? Access panel →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Slide-out Panel -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-panel" id="cartPanel" aria-label="Shopping Cart" aria-hidden="true">
+        <div class="cart-panel-header">
+            <h2>Your Basket</h2>
+            <button class="cart-close" id="cartClose" aria-label="Close Cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-panel-body" id="cartPanelBody">
+            <!-- Cart items render here -->
+        </div>
+        <div class="cart-panel-footer">
+            <div class="cart-total-row">
+                <span>Total</span>
+                <strong id="cartTotal">৳ 0</strong>
+            </div>
+            <button class="btn btn-primary cart-checkout" id="cartCheckout">Place Order</button>
+        </div>
+    </aside>
+
+    <!-- Wishlist Slide-out Panel -->
+    <div class="cart-overlay" id="wishlistOverlay"></div>
+    <aside class="cart-panel" id="wishlistPanel" aria-label="Wishlist" aria-hidden="true">
+        <div class="cart-panel-header">
+            <h2>Your Wishlist</h2>
+            <button class="cart-close" id="wishlistClose" aria-label="Close Wishlist"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-panel-body" id="wishlistPanelBody"></div>
+    </aside>
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-box quickview-box" role="dialog" aria-modal="true">
+            <button class="modal-close" id="quickViewClose" aria-label="Close"><i class="fas fa-times"></i></button>
+            <div class="quickview-grid">
+                <div class="quickview-img"><img id="qvImage" src="" alt=""></div>
+                <div class="quickview-info">
+                    <span class="product-brand" id="qvBrand"></span>
+                    <h2 id="qvTitle"></h2>
+                    <div class="quickview-price-row">
+                        <span class="product-price" id="qvPrice"></span>
+                        <span id="qvStock"></span>
+                    </div>
+                    <p class="quickview-desc" id="qvDesc"></p>
+                    <button class="btn btn-primary" id="qvAdd">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-box checkout-box" role="dialog" aria-modal="true">
+            <button class="modal-close" id="checkoutClose" aria-label="Close"><i class="fas fa-times"></i></button>
+            <h2>Checkout</h2>
+            <p class="modal-sub">Cash on Delivery · 100% Discreet Packaging</p>
+            <div id="checkoutItems" class="checkout-items"></div>
+            <div class="checkout-totals">
+                <div class="co-row"><span>Subtotal</span><span id="checkoutSubtotal">৳ 0</span></div>
+                <div class="co-row"><span>Delivery (<em id="coArea"></em>)</span><span id="checkoutFee">৳ 0</span></div>
+                <div class="co-row co-total"><span>Total</span><span id="checkoutTotal">৳ 0</span></div>
+            </div>
+
+            <!-- Delivery Location Selector (shown at order confirm time) -->
+            <div class="checkout-location">
+                <label>Delivery Area</label>
+                <div class="location-selector checkout-loc">
+                    <button type="button" class="location-btn" id="checkoutLocBtn">
+                        <i class="fas fa-map-marker-alt"></i> <strong class="loc-name">GEC Circle</strong>
+                        <span class="loc-fee" id="checkoutLocFee">৳50</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="location-menu" id="checkoutLocationMenu">
+                        <div class="location-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="checkoutLocationSearch" placeholder="Search your area...">
+                        </div>
+                        <div class="location-list" id="checkoutLocationList"></div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="checkoutForm">
+                <label for="coName">Full Name</label>
+                <input type="text" id="coName" required placeholder="Your name">
+                <label for="coPhone">Phone</label>
+                <input type="tel" id="coPhone" required placeholder="01XXXXXXXXX">
+                <label for="coAddress">Delivery Address</label>
+                <textarea id="coAddress" required rows="2" placeholder="House, road, area"></textarea>
+                <button type="submit" class="btn btn-primary modal-submit">Place COD Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <a href="javascript:void(0)" id="mbnHome"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="javascript:void(0)" id="mbnWish"><i class="fas fa-heart"></i><span>Wishlist</span></a>
+        <a href="javascript:void(0)" id="mbnCart"><i class="fas fa-shopping-basket"></i><span>Basket</span></a>
+        <a href="javascript:void(0)" id="mbnAcc"><i class="fas fa-user-circle"></i><span>Account</span></a>
+    </nav>
+
+    <!-- App Engine Execution Layer -->
+    <script src="script.js"></script>
+</body>
+</html>

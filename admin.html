@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condomart | Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-wrap { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .admin-stats { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+        .admin-stat {
+            flex: 1; min-width: 150px; background: var(--color-white);
+            border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+            padding: 20px; text-align: center;
+        }
+        .admin-stat i { font-size: 1.8rem; color: var(--color-secondary); margin-bottom: 8px; }
+        .admin-stat strong { display: block; font-size: 1.6rem; color: var(--color-primary); }
+        .admin-stat span { font-size: 0.8rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .admin-section {
+            background: var(--color-white); border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg); padding: 22px; margin-bottom: 26px;
+        }
+        .admin-section h2 { color: var(--color-primary); font-size: 1.2rem; margin-bottom: 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
+
+        .admin-order {
+            border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+            padding: 16px; margin-bottom: 14px; background: var(--color-bg-light);
+        }
+        .admin-order-head { display: flex; justify-content: space-between; align-items: center; flex-wrap:wrap; gap:8px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px; margin-bottom: 12px; }
+        .admin-order-head h3 { font-size: 1rem; color: var(--color-primary); }
+        .admin-order-head .admin-total { font-weight: 700; color: var(--color-secondary); }
+        .admin-cust { font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 10px; }
+        .admin-order table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .admin-order th { text-align: left; color: var(--color-text-muted); font-weight: 600; padding: 4px 6px; }
+        .admin-order td { padding: 4px 6px; color: var(--color-text-main); }
+        .admin-order .num { text-align: right; }
+        .admin-empty { text-align: center; color: var(--color-text-muted); padding: 50px; }
+        .admin-clear { margin-bottom: 20px; }
+
+        .status-badge { display:inline-block; padding:3px 10px; border-radius:50px; font-size:0.75rem; font-weight:600; }
+        .status-Pending { background:#fef3c7; color:#92400e; }
+        .status-Shipped { background:#dbeafe; color:#1e40af; }
+        .status-Delivered { background:#d1fae5; color:#065f46; }
+        .status-Cancelled { background:#fee2e2; color:#991b1b; }
+
+        .status-controls { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+        .status-controls button { font-size:0.78rem; padding:5px 12px; border-radius:50px; border:1px solid var(--color-border); background:var(--color-white); cursor:pointer; color:var(--color-text-main); }
+        .status-controls button.active { background:var(--color-secondary); color:#fff; border-color:var(--color-secondary); }
+
+        .prod-row { display:flex; align-items:center; gap:12px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius-md); margin-bottom:10px; flex-wrap:wrap; }
+        .prod-row img { width:46px; height:46px; object-fit:cover; border-radius:8px; background:var(--color-bg-light); }
+        .prod-row .pinfo { flex:1; min-width:160px; }
+        .prod-row .pinfo b { color:var(--color-primary); }
+        .prod-row .pinfo small { color:var(--color-text-muted); }
+        .prod-row .pstock { display:flex; flex-direction:column; gap:3px; min-width:120px; }
+        .pstock-badge { display:inline-block; padding:2px 9px; border-radius:50px; font-size:0.72rem; font-weight:700; width:fit-content; }
+        .pstock-badge.ok { background:#d1fae5; color:#065f46; }
+        .pstock-badge.low { background:#fef3c7; color:#92400e; }
+        .pstock-badge.out { background:#fee2e2; color:#991b1b; }
+        .pstock-num { font-size:0.78rem; color:var(--color-text-muted); }
+        .pstock-num strong { color:var(--color-primary); }
+        .prod-row .pprice { font-weight:700; color:var(--color-primary); }
+        .prod-actions { display:flex; gap:6px; }
+        .prod-actions button { border:1px solid var(--color-border); background:var(--color-white); border-radius:6px; padding:6px 10px; cursor:pointer; }
+        .prod-actions .del { color:#dc2626; border-color:#fecaca; }
+
+        .admin-form-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+        .admin-form-grid label { font-size:0.8rem; font-weight:600; color:var(--color-primary); display:block; margin-bottom:4px; }
+        .admin-form-grid input, .admin-form-grid select { width:100%; padding:9px 11px; border:2px solid var(--color-border); border-radius:var(--radius-md); font-size:0.9rem; font-family:var(--font-main); outline:none; }
+        .admin-form-grid input:focus, .admin-form-grid select:focus { border-color:var(--color-secondary); }
+        .admin-form-grid .full { grid-column:1/-1; }
+        .img-picker { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+        .img-picker select { flex:1; min-width:180px; }
+        .img-picker input { flex:1; min-width:160px; }
+        .img-or { font-size:0.8rem; color:var(--color-text-muted); }
+        .img-preview { width:80px; height:80px; object-fit:cover; border-radius:8px; background:var(--color-bg-light); border:1px solid var(--color-border); margin-top:8px; }
+        .admin-gate {
+            position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(160deg, #fff5fa 0%, #eff6ff 100%);
+            padding: 20px; z-index: 500;
+        }
+        .admin-gate-box {
+            background: var(--color-white); border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg); padding: 32px 28px; width: 100%; max-width: 360px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12); text-align: center;
+        }
+        .admin-gate-box h2 { color: var(--color-primary); margin-bottom: 6px; font-size: 1.5rem; }
+        .admin-gate-box p { color: var(--color-text-muted); font-size: 0.88rem; margin-bottom: 18px; }
+        .admin-gate-box label { display: block; text-align: left; font-size: 0.8rem; font-weight: 600; color: var(--color-primary); margin: 12px 0 4px; }
+        .admin-gate-box input {
+            width: 100%; padding: 10px 12px; border: 2px solid var(--color-border);
+            border-radius: var(--radius-md); font-size: 0.95rem; outline: none;
+            font-family: var(--font-main); transition: var(--transition-smooth);
+        }
+        .admin-gate-box input:focus { border-color: var(--color-secondary); }
+        .admin-gate-box .btn { width: 100%; margin-top: 18px; text-align: center; }
+        .admin-gate-hint { font-size: 0.78rem; color: var(--color-text-muted); margin-top: 16px; }
+    </style>
+</head>
+<body>
+    <!-- Admin Login Gate -->
+    <div id="adminLogin" class="admin-gate">
+        <div class="admin-gate-box">
+            <h2><span class="logo-accent">Condo</span>mart Admin</h2>
+            <p>Please login with the store admin credentials.</p>
+            <form id="adminLoginForm">
+                <label for="adminUser">Username</label>
+                <input type="text" id="adminUser" required placeholder="admin">
+                <label for="adminPass">Password</label>
+                <input type="password" id="adminPass" required placeholder="Password">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p class="admin-gate-hint">Default — user: <strong>admin</strong> / pass: <strong>admin123</strong></p>
+        </div>
+    </div>
+
+    <div class="admin-wrap" id="adminContent" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <h1 style="color: var(--color-primary); margin-bottom: 6px;">
+                <span class="logo-accent">Condo</span>mart Admin
+            </h1>
+            <button class="btn btn-secondary" id="adminLogout">Logout</button>
+        </div>
+
+        <div class="admin-stats" id="adminStats"></div>
+
+        <!-- Product Management -->
+        <div class="admin-section">
+            <h2>Products <button class="btn btn-primary" id="prodAddBtn" style="padding:6px 14px;font-size:0.85rem;">+ Add Product</button></h2>
+            <div id="prodList"></div>
+            <div id="prodFormWrap" style="display:none; margin-top:16px;">
+                <form id="prodForm" class="admin-form-grid">
+                    <input type="hidden" id="prodId">
+                    <div class="full">
+                        <label for="prodTitle">Title</label>
+                        <input type="text" id="prodTitle" required>
+                    </div>
+                    <div>
+                        <label for="prodBrand">Brand</label>
+                        <input type="text" id="prodBrand" required>
+                    </div>
+                    <div>
+                        <label for="prodCategory">Category</label>
+                        <select id="prodCategory">
+                            <option value="condoms">Condoms</option>
+                            <option value="lubricants">Lubricants & Gels</option>
+                            <option value="contraceptive">Contraceptive & Test Kits</option>
+                            <option value="delay">Delay Sprays</option>
+                            <option value="pills">Pills</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="prodPrice">Price (৳)</label>
+                        <input type="number" id="prodPrice" required min="0">
+                    </div>
+                    <div>
+                        <label for="prodStock">Stock</label>
+                        <input type="number" id="prodStock" required min="0">
+                    </div>
+                    <div class="full">
+                        <label for="prodImage">Product Image</label>
+                        <div class="img-picker">
+                            <select id="prodImageSelect">
+                                <option value="">— Choose existing image —</option>
+                                <option value="images/condom-plain.svg">condom-plain</option>
+                                <option value="images/condom-ribbed.svg">condom-ribbed</option>
+                                <option value="images/condom-dot.svg">condom-dot</option>
+                                <option value="images/condom-thin.svg">condom-thin</option>
+                                <option value="images/condom-variety.svg">condom-variety</option>
+                                <option value="images/lube-bottle.svg">lube-bottle</option>
+                                <option value="images/lube-massage.svg">lube-massage</option>
+                                <option value="images/lube-water.svg">lube-water</option>
+                                <option value="images/lube-silk.svg">lube-silk</option>
+                                <option value="images/lube-warming.svg">lube-warming</option>
+                                <option value="images/contraceptive.svg">contraceptive</option>
+                                <option value="images/test-kit.svg">test-kit</option>
+                                <option value="images/delay-spray.svg">delay-spray</option>
+                                <option value="images/pill.svg">pill</option>
+                            </select>
+                            <span class="img-or">or path:</span>
+                            <input type="text" id="prodImage" placeholder="images/your-file.svg">
+                        </div>
+                        <img id="prodImagePreview" class="img-preview" alt="Preview" src="" style="display:none;">
+                    </div>
+                    <div class="full">
+                        <label for="prodIcon">Icon Class (FontAwesome)</label>
+                        <input type="text" id="prodIcon" placeholder="fas fa-layer-group">
+                    </div>
+                    <div class="full" style="display:flex; gap:10px;">
+                        <button type="submit" class="btn btn-primary">Save Product</button>
+                        <button type="button" class="btn btn-secondary" id="prodCancel">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="admin-section">
+            <h2>Orders</h2>
+            <button class="btn btn-secondary admin-clear" id="adminClear">Clear All Orders</button>
+            <div id="adminOrders"></div>
+        </div>
+    </div>
+
+    <script>
+        const ORDERS_STORAGE_KEY = "condomart_orders";
+        const PRODUCTS_STORAGE_KEY = "condomart_products";
+        const ADMIN_SESSION_KEY = "condomart_admin_session";
+        const ADMIN_USER = "admin";
+        const ADMIN_PASS = "admin123";
+        const STATUSES = ["Pending", "Shipped", "Delivered", "Cancelled"];
+
+        function loadOrders() {
+            try { return JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY)) || []; }
+            catch (e) { return []; }
+        }
+        function saveOrders(orders) { localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders)); }
+        function loadProducts() {
+            try { return JSON.parse(localStorage.getItem(PRODUCTS_STORAGE_KEY)) || []; }
+            catch (e) { return []; }
+        }
+        function saveProducts(products) { localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products)); }
+
+        const CATEGORY_IMAGES = {
+            "condoms": "images/condom-plain.svg",
+            "lubricants": "images/lube-bottle.svg",
+            "contraceptive": "images/contraceptive.svg",
+            "delay": "images/delay-spray.svg",
+            "pills": "images/pill.svg"
+        };
+        const CATEGORY_ICONS = {
+            "condoms": "fas fa-layer-group",
+            "lubricants": "fas fa-water",
+            "contraceptive": "fas fa-vial",
+            "delay": "fas fa-spray-can",
+            "pills": "fas fa-pills"
+        };
+
+        let products = loadProducts();
+
+        function renderStats() {
+            const orders = loadOrders();
+            const statsEl = document.getElementById("adminStats");
+            const totalOrders = orders.length;
+            const totalRevenue = orders.reduce((s, o) => s + (o.total || 0), 0);
+            const totalUnits = orders.reduce((s, o) => s + o.items.reduce((a, i) => a + i.qty, 0), 0);
+            const lowStock = products.filter(p => p.stock <= 10).length;
+            statsEl.innerHTML = `
+                <div class="admin-stat"><i class="fas fa-receipt"></i><strong>${totalOrders}</strong><span>Orders</span></div>
+                <div class="admin-stat"><i class="fas fa-box"></i><strong>${totalUnits}</strong><span>Items Sold</span></div>
+                <div class="admin-stat"><i class="fas fa-coins"></i><strong>৳ ${totalRevenue}</strong><span>Revenue</span></div>
+                <div class="admin-stat"><i class="fas fa-exclamation-triangle"></i><strong>${lowStock}</strong><span>Low Stock</span></div>
+            `;
+        }
+
+        function renderProducts() {
+            const wrap = document.getElementById("prodList");
+            if (products.length === 0) {
+                wrap.innerHTML = `<p class="admin-empty">No products.</p>`;
+                return;
+            }
+            wrap.innerHTML = products.map(p => {
+                const img = p.image || CATEGORY_IMAGES[p.category] || "images/condoms.svg";
+                const stockClass = p.stock <= 0 ? "out" : (p.stock <= 10 ? "low" : "ok");
+                const stockLabel = p.stock <= 0 ? "Out of Stock" : (p.stock <= 10 ? "Only " + p.stock + " left" : p.stock + " in stock");
+                return `
+                    <div class="prod-row" data-id="${p.id}">
+                        <img src="${img}" alt="${p.title}">
+                        <div class="pinfo">
+                            <b>${p.title}</b><br>
+                            <small>${p.brand} · ${p.category}</small>
+                        </div>
+                        <div class="pstock">
+                            <span class="pstock-badge ${stockClass}">${stockLabel}</span>
+                            <span class="pstock-num">Qty: <strong>${p.stock}</strong></span>
+                        </div>
+                        <div class="pprice">৳ ${p.price}</div>
+                        <div class="prod-actions">
+                            <button class="edit" data-edit="${p.id}"><i class="fas fa-edit"></i></button>
+                            <button class="del" data-del="${p.id}"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>`;
+            }).join("");
+        }
+
+        function renderOrders() {
+            const orders = loadOrders();
+            const ordersEl = document.getElementById("adminOrders");
+            if (orders.length === 0) {
+                ordersEl.innerHTML = `<div class="admin-empty"><i class="fas fa-inbox" style="font-size:3rem;margin-bottom:12px;"></i><p>No orders yet.</p></div>`;
+                return;
+            }
+            ordersEl.innerHTML = orders.slice().reverse().map(order => {
+                const date = new Date(order.placedAt).toLocaleString();
+                const rows = order.items.map(i => `
+                    <tr>
+                        <td>${i.title}</td><td>${i.brand}</td>
+                        <td class="num">৳ ${i.price}</td><td class="num">${i.qty}</td>
+                        <td class="num">৳ ${i.subtotal}</td>
+                    </tr>`).join("");
+                const cust = order.customer ? `${order.customer.name} · ${order.customer.phone} · ${order.customer.address} (${order.customer.area})` : "Guest";
+                const statusBtns = STATUSES.map(s =>
+                    `<button class="${order.status === s ? 'active' : ''}" data-status="${s}" data-order="${order.id}">${s}</button>`
+                ).join("");
+                return `
+                    <div class="admin-order">
+                        <div class="admin-order-head">
+                            <h3>${order.id}</h3>
+                            <div>
+                                <span style="color:var(--color-text-muted);font-size:0.8rem;margin-right:12px;">${date}</span>
+                                <span class="status-badge status-${order.status}">${order.status}</span>
+                                <span class="admin-total" style="margin-left:10px;">৳ ${order.total}</span>
+                            </div>
+                        </div>
+                        <div class="admin-cust"><i class="fas fa-user"></i> ${cust}</div>
+                        <table>
+                            <thead><tr><th>Product</th><th>Brand</th><th class="num">Price</th><th class="num">Qty</th><th class="num">Subtotal</th></tr></thead>
+                            <tbody>${rows}</tbody>
+                        </table>
+                        <div class="status-controls">${statusBtns}</div>
+                    </div>`;
+            }).join("");
+        }
+
+        function renderAdmin() { renderStats(); renderProducts(); renderOrders(); }
+
+        // Product form
+        const formWrap = document.getElementById("prodFormWrap");
+        document.getElementById("prodAddBtn").addEventListener("click", () => {
+            document.getElementById("prodForm").reset();
+            document.getElementById("prodId").value = "";
+            imgSelect.value = "";
+            imgPreview.style.display = "none";
+            formWrap.style.display = "block";
+        });
+        document.getElementById("prodCancel").addEventListener("click", () => { formWrap.style.display = "none"; });
+
+        // Image picker sync + live preview
+        const imgSelect = document.getElementById("prodImageSelect");
+        const imgInput = document.getElementById("prodImage");
+        const imgPreview = document.getElementById("prodImagePreview");
+        function updateImageFromControls() {
+            const val = imgSelect.value || imgInput.value.trim();
+            if (val) { imgPreview.src = val; imgPreview.style.display = "block"; }
+            else { imgPreview.style.display = "none"; }
+        }
+        imgSelect.addEventListener("change", () => { if (imgSelect.value) imgInput.value = imgSelect.value; updateImageFromControls(); });
+        imgInput.addEventListener("input", () => { imgSelect.value = ""; updateImageFromControls(); });
+
+        document.getElementById("prodForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const id = document.getElementById("prodId").value;
+            const cat = document.getElementById("prodCategory").value;
+            const imageVal = imgSelect.value || imgInput.value.trim();
+            const data = {
+                title: document.getElementById("prodTitle").value.trim(),
+                brand: document.getElementById("prodBrand").value.trim(),
+                category: cat,
+                price: Number(document.getElementById("prodPrice").value),
+                stock: Number(document.getElementById("prodStock").value),
+                image: imageVal || CATEGORY_IMAGES[cat],
+                icon: document.getElementById("prodIcon").value.trim() || CATEGORY_ICONS[cat]
+            };
+            if (id) {
+                const idx = products.findIndex(p => p.id === id);
+                if (idx >= 0) products[idx] = { ...products[idx], ...data };
+            } else {
+                data.id = "p" + Date.now();
+                products.push(data);
+            }
+            saveProducts(products);
+            formWrap.style.display = "none";
+            renderAdmin();
+        });
+
+        document.getElementById("prodList").addEventListener("click", (e) => {
+            const editBtn = e.target.closest("[data-edit]");
+            const delBtn = e.target.closest("[data-del]");
+            if (editBtn) {
+                const p = products.find(x => x.id === editBtn.getAttribute("data-edit"));
+                if (!p) return;
+                document.getElementById("prodId").value = p.id;
+                document.getElementById("prodTitle").value = p.title;
+                document.getElementById("prodBrand").value = p.brand;
+                document.getElementById("prodCategory").value = p.category;
+                document.getElementById("prodPrice").value = p.price;
+                document.getElementById("prodStock").value = p.stock;
+                imgSelect.value = [...imgSelect.options].some(o => o.value === (p.image || "")) ? (p.image || "") : "";
+                imgInput.value = p.image || "";
+                document.getElementById("prodIcon").value = p.icon || "";
+                if (p.image) { imgPreview.src = p.image; imgPreview.style.display = "block"; } else { imgPreview.style.display = "none"; }
+                formWrap.style.display = "block";
+            }
+            if (delBtn) {
+                const pid = delBtn.getAttribute("data-del");
+                if (confirm("Delete this product?")) {
+                    products = products.filter(x => x.id !== pid);
+                    saveProducts(products);
+                    renderAdmin();
+                }
+            }
+        });
+
+        // Order status
+        document.getElementById("adminOrders").addEventListener("click", (e) => {
+            const btn = e.target.closest("[data-status]");
+            if (!btn) return;
+            const oid = btn.getAttribute("data-order");
+            const status = btn.getAttribute("data-status");
+            let orders = loadOrders();
+            const idx = orders.findIndex(o => o.id === oid);
+            if (idx >= 0) { orders[idx].status = status; saveOrders(orders); renderOrders(); renderStats(); }
+        });
+
+        document.getElementById("adminClear").addEventListener("click", () => {
+            if (confirm("Clear all orders? This cannot be undone.")) {
+                localStorage.removeItem(ORDERS_STORAGE_KEY);
+                renderAdmin();
+            }
+        });
+
+        // Login gate
+        const loginEl = document.getElementById("adminLogin");
+        const contentEl = document.getElementById("adminContent");
+        const loginForm = document.getElementById("adminLoginForm");
+        const logoutBtn = document.getElementById("adminLogout");
+
+        function showContent() { loginEl.style.display = "none"; contentEl.style.display = "block"; renderAdmin(); }
+        function showLogin() { loginEl.style.display = "flex"; contentEl.style.display = "none"; }
+
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const u = document.getElementById("adminUser").value.trim();
+            const p = document.getElementById("adminPass").value;
+            if (u === ADMIN_USER && p === ADMIN_PASS) {
+                localStorage.setItem(ADMIN_SESSION_KEY, "1");
+                showContent();
+            } else {
+                alert("Invalid admin credentials.");
+            }
+        });
+
+        logoutBtn.addEventListener("click", () => {
+            localStorage.removeItem(ADMIN_SESSION_KEY);
+            showLogin();
+        });
+
+        if (localStorage.getItem(ADMIN_SESSION_KEY) === "1") {
+            showContent();
+        } else {
+            showLogin();
+        }
+        window.addEventListener("storage", renderAdmin);
+    </script>
+</body>
+</html>
