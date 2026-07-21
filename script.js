@@ -1921,25 +1921,43 @@ const VALID_CATEGORIES = ["condoms", "lubricants", "contraceptive", "delay", "pi
 
 // Combo offer persistence
 const COMBO_STORAGE_KEY = "condomart_combo";
-const DEFAULT_COMBO = {
-    title: "Durex Flavour Combo 12s + Extra Thin 3s",
-    image: "images/condoms/Durex-Flavours-Condom-Strawberry-Banana-Orange-Apple-Combo---12s-Pack.avif",
-    originalPrice: 1200,
-    comboPrice: 899,
-    items: ["Durex Flavours 12s", "Durex Extra Thin 3s"],
-    active: true
-};
+const DEFAULT_COMBOS = [
+    {
+        title: "Durex Flavour Combo 12s + Extra Thin 3s",
+        image: "images/condoms/Durex-Flavours-Condom-Strawberry-Banana-Orange-Apple-Combo---12s-Pack.avif",
+        originalPrice: 1200,
+        comboPrice: 899,
+        items: ["Durex Flavours 12s", "Durex Extra Thin 3s"],
+        active: true
+    },
+    {
+        title: "Moods Mega Pack — Dotted + Ribbed + Ultra Thin",
+        image: "images/condoms/Moods-Panache-Dotted-Condom-12-pcs-Pack.avif",
+        originalPrice: 800,
+        comboPrice: 599,
+        items: ["Moods Dotted 12s", "Moods Ribbed 3s", "Moods Ultra Thin 3s"],
+        active: true
+    },
+    {
+        title: "Manforce Bestseller Combo — Chocolate + Strawberry",
+        image: "images/condoms/Manforce-Chocolate-Flavoured-3s-Pack.avif",
+        originalPrice: 650,
+        comboPrice: 449,
+        items: ["Manforce Chocolate 3s", "Manforce Wild Strawberry 10s"],
+        active: true
+    }
+];
 
-function loadCombo() {
+function loadCombos() {
     try {
         var c = JSON.parse(localStorage.getItem(COMBO_STORAGE_KEY));
-        if (c && c.title) return c;
+        if (Array.isArray(c) && c.length) return c;
     } catch (e) {}
-    return Object.assign({}, DEFAULT_COMBO);
+    return JSON.parse(JSON.stringify(DEFAULT_COMBOS));
 }
 
-function saveCombo(combo) {
-    localStorage.setItem(COMBO_STORAGE_KEY, JSON.stringify(combo));
+function saveCombos(combos) {
+    localStorage.setItem(COMBO_STORAGE_KEY, JSON.stringify(combos));
 }
 
 function loadProducts() {
@@ -2063,48 +2081,90 @@ function initHeroMarquee() {
     rightTrack.innerHTML = buildRow([...allImages].reverse()) + buildRow([...allImages].reverse());
 }
 
+var comboTimer = null;
+var comboIndex = 0;
+
 function renderComboOffer() {
     var card = document.getElementById("comboOfferCard");
-    if (!card) return;
-    var combo = loadCombo();
-    if (!combo.active) { card.style.display = "none"; return; }
-
-    var imgEl = document.getElementById("comboProductImg");
-    var titleEl = document.getElementById("comboTitle");
-    var oldPriceEl = document.getElementById("comboOldPrice");
-    var newPriceEl = document.getElementById("comboNewPrice");
-    var savingsEl = document.getElementById("comboSavings");
+    var wrapper = document.getElementById("comboSlideWrapper");
+    var dotsEl = document.getElementById("comboDots");
     var addBtn = document.getElementById("comboAddBtn");
+    if (!card || !wrapper) return;
 
-    if (imgEl) imgEl.innerHTML = '<img src="' + combo.image + '" alt="' + combo.title + '" style="width:100px;height:100px;object-fit:contain;">';
-    if (titleEl) titleEl.textContent = combo.title;
-    if (oldPriceEl) oldPriceEl.textContent = "৳ " + combo.originalPrice;
-    if (newPriceEl) newPriceEl.textContent = "৳ " + combo.comboPrice;
-    var savings = combo.originalPrice - combo.comboPrice;
-    if (savingsEl) savingsEl.textContent = savings > 0 ? "সেভ করুন ৳ " + savings : "";
+    var allCombos = loadCombos();
+    var combos = allCombos.filter(function(c) { return c.active; });
+
+    if (combos.length === 0) { card.style.display = "none"; return; }
+    card.style.display = "";
+
+    wrapper.innerHTML = "";
+    dotsEl.innerHTML = "";
+    comboIndex = 0;
+
+    combos.forEach(function(c, i) {
+        var savings = c.originalPrice - c.comboPrice;
+        var slide = document.createElement("div");
+        slide.className = "combo-slide" + (i === 0 ? " active" : "");
+        slide.innerHTML =
+            '<img src="' + c.image + '" alt="' + c.title + '" style="width:90px;height:90px;object-fit:contain;">' +
+            '<h3 class="combo-title">' + c.title + '</h3>' +
+            '<div class="combo-pricing">' +
+            '<span class="combo-old-price">৳ ' + c.originalPrice + '</span>' +
+            '<span class="combo-new-price">৳ ' + c.comboPrice + '</span>' +
+            '</div>' +
+            (savings > 0 ? '<div class="combo-savings">সেভ করুন ৳ ' + savings + '</div>' : '');
+        wrapper.appendChild(slide);
+
+        var dot = document.createElement("button");
+        dot.className = "combo-dot" + (i === 0 ? " active" : "");
+        dot.setAttribute("aria-label", "Combo " + (i + 1));
+        dot.addEventListener("click", function() { goToCombo(i); });
+        dotsEl.appendChild(dot);
+    });
+
     if (addBtn) {
         addBtn.onclick = function() {
-            if (combo.comboPrice <= 0) { showToast("কম্বো প্রাইস সেট করুন"); return; }
+            var c = combos[comboIndex];
+            if (!c || c.comboPrice <= 0) { showToast("কম্বো প্রাইস সেট করুন"); return; }
             var comboProduct = {
                 id: "combo-" + Date.now(),
-                title: combo.title,
+                title: c.title,
                 brand: "Combo",
                 category: "condoms",
-                price: combo.comboPrice,
-                image: combo.image,
+                price: c.comboPrice,
+                image: c.image,
                 stock: 999
             };
-            var existing = cartState.items["combo-offer"];
+            var key = "combo-offer-" + comboIndex;
+            var existing = cartState.items[key];
             if (existing) {
                 existing.qty += 1;
             } else {
-                cartState.items["combo-offer"] = { product: comboProduct, qty: 1 };
+                cartState.items[key] = { product: comboProduct, qty: 1 };
             }
             renderCart();
             showToast("কম্বো কার্টে যোগ হয়েছে!");
             document.getElementById("cartPanel").classList.add("open");
             document.getElementById("cartOverlay").classList.add("open");
         };
+    }
+
+    if (combos.length > 1) {
+        if (comboTimer) clearInterval(comboTimer);
+        comboTimer = setInterval(function() { goToCombo((comboIndex + 1) % combos.length); }, 3000);
+    }
+
+    function goToCombo(idx) {
+        var slides = wrapper.querySelectorAll(".combo-slide");
+        var dots = dotsEl.querySelectorAll(".combo-dot");
+        if (!slides.length) return;
+        slides[comboIndex].classList.remove("active");
+        slides[comboIndex].classList.add("exit");
+        dots[comboIndex].classList.remove("active");
+        setTimeout(function() { slides[comboIndex].classList.remove("exit"); }, 400);
+        comboIndex = idx;
+        slides[comboIndex].classList.add("active");
+        dots[comboIndex].classList.add("active");
     }
 }
 

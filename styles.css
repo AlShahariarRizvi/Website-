@@ -450,6 +450,59 @@ body {
     object-fit: contain;
     margin: 4px 0;
 }
+.combo-slide-wrapper {
+    width: 100%;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.combo-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    padding: 0 10px;
+}
+.combo-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+.combo-slide.exit {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+.combo-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 6px;
+}
+.combo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    padding: 0;
+}
+.combo-dot.active {
+    background: var(--color-secondary);
+    width: 20px;
+    border-radius: 4px;
+}
 .combo-title {
     font-size: 0.95rem;
     font-weight: 700;

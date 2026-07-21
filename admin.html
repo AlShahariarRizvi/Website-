@@ -254,20 +254,22 @@
         </div>
 
         <div class="admin-section">
-            <h2><i class="fas fa-tags" style="margin-right:8px;"></i> Combo Offer Setup</h2>
-            <p style="font-size:0.82rem;color:var(--color-text-muted);margin-bottom:14px;">Homepage hero section e combo offer card dekhanor jonno price setup koren.</p>
+            <h2><i class="fas fa-tags" style="margin-right:8px;"></i> Combo Offers</h2>
+            <p style="font-size:0.82rem;color:var(--color-text-muted);margin-bottom:14px;">Homepage hero section e combo offer cards 3 sec por por auto-rotate hoy.</p>
+            <div id="comboListAdmin" style="margin-bottom:16px;"></div>
             <form id="comboForm" class="admin-form-grid">
+                <input type="hidden" id="comboEditIdx" value="-1">
                 <div class="full">
                     <label for="comboTitleInput">Combo Title</label>
-                    <input type="text" id="comboTitleInput" placeholder="e.g. Durex Flavour Combo 12s + Extra Thin 3s">
+                    <input type="text" id="comboTitleInput" placeholder="e.g. Durex Flavour Combo 12s + Extra Thin 3s" required>
                 </div>
                 <div>
                     <label for="comboOrigPrice">Original Price (৳)</label>
-                    <input type="number" id="comboOrigPrice" min="0" placeholder="1200">
+                    <input type="number" id="comboOrigPrice" min="0" placeholder="1200" required>
                 </div>
                 <div>
                     <label for="comboSalePrice">Combo Price (৳)</label>
-                    <input type="number" id="comboSalePrice" min="0" placeholder="899">
+                    <input type="number" id="comboSalePrice" min="0" placeholder="899" required>
                 </div>
                 <div>
                     <label for="comboItemsInput">Included Items (comma-separated)</label>
@@ -285,7 +287,8 @@
                     </select>
                 </div>
                 <div class="full" style="display:flex;gap:10px;">
-                    <button type="submit" class="btn btn-primary">Save Combo Offer</button>
+                    <button type="submit" class="btn btn-primary" id="comboSubmitBtn">+ Add Combo</button>
+                    <button type="button" class="btn btn-secondary" id="comboCancelBtn" style="display:none;">Cancel</button>
                     <span id="comboSaveMsg" style="color:#16a34a;font-size:0.85rem;font-weight:600;align-self:center;"></span>
                 </div>
             </form>
@@ -319,22 +322,74 @@
         function saveProducts(products) { localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products)); }
 
         function loadCombo() {
-            try { return JSON.parse(localStorage.getItem(COMBO_STORAGE_KEY)) || null; } catch (e) { return null; }
+            try {
+                var c = JSON.parse(localStorage.getItem(COMBO_STORAGE_KEY));
+                if (Array.isArray(c) && c.length) return c;
+            } catch (e) { return []; }
+            return [];
         }
         function saveCombo(c) { localStorage.setItem(COMBO_STORAGE_KEY, JSON.stringify(c)); }
-        function populateComboForm() {
-            var c = loadCombo();
-            if (!c) return;
-            document.getElementById("comboTitleInput").value = c.title || "";
-            document.getElementById("comboOrigPrice").value = c.originalPrice || 0;
-            document.getElementById("comboSalePrice").value = c.comboPrice || 0;
-            document.getElementById("comboItemsInput").value = (c.items || []).join(", ");
-            document.getElementById("comboImageInput").value = c.image || "";
-            document.getElementById("comboActive").value = c.active ? "true" : "false";
+
+        function renderComboList() {
+            var combos = loadCombo();
+            var el = document.getElementById("comboListAdmin");
+            if (!combos.length) { el.innerHTML = '<p style="color:var(--color-text-muted);font-size:0.85rem;">No combos yet. Add one below.</p>'; return; }
+            el.innerHTML = '<div class="pm-scroll-wrap"><div>' + combos.map(function(c, i) {
+                var savings = c.originalPrice - c.comboPrice;
+                return '<div class="pm-row" style="grid-template-columns:44px 1fr auto auto auto;">' +
+                    '<img class="pm-row-img" src="' + c.image + '" alt="' + c.title + '">' +
+                    '<div class="pm-row-info"><div class="pm-row-title">' + c.title + '</div>' +
+                    '<div class="pm-row-brand">' + (c.items || []).join(", ") + '</div></div>' +
+                    '<span style="font-size:0.8rem;color:var(--color-text-muted);">৳' + c.originalPrice + ' → <strong style="color:#e11d48;">৳' + c.comboPrice + '</strong></span>' +
+                    '<span class="status-badge ' + (c.active ? 'status-Delivered' : 'status-Cancelled') + '">' + (c.active ? 'Active' : 'Off') + '</span>' +
+                    '<div class="pm-actions">' +
+                    '<button class="pm-edit" data-combo-edit="' + i + '" title="Edit"><i class="fas fa-edit"></i></button>' +
+                    '<button class="pm-del" data-combo-del="' + i + '" title="Delete"><i class="fas fa-trash"></i></button>' +
+                    '</div></div>';
+            }).join("") + '</div></div>';
         }
-        populateComboForm();
+        renderComboList();
+
+        document.getElementById("comboListAdmin").addEventListener("click", function(e) {
+            var editBtn = e.target.closest("[data-combo-edit]");
+            var delBtn = e.target.closest("[data-combo-del]");
+            if (editBtn) {
+                var idx = Number(editBtn.getAttribute("data-combo-edit"));
+                var combos = loadCombo();
+                var c = combos[idx];
+                if (!c) return;
+                document.getElementById("comboEditIdx").value = idx;
+                document.getElementById("comboTitleInput").value = c.title || "";
+                document.getElementById("comboOrigPrice").value = c.originalPrice || 0;
+                document.getElementById("comboSalePrice").value = c.comboPrice || 0;
+                document.getElementById("comboItemsInput").value = (c.items || []).join(", ");
+                document.getElementById("comboImageInput").value = c.image || "";
+                document.getElementById("comboActive").value = c.active ? "true" : "false";
+                document.getElementById("comboSubmitBtn").textContent = "Save Edit";
+                document.getElementById("comboCancelBtn").style.display = "";
+                document.getElementById("comboFormWrap") && document.getElementById("comboForm").scrollIntoView({ behavior: "smooth" });
+            }
+            if (delBtn) {
+                if (!confirm("Delete this combo?")) return;
+                var idx2 = Number(delBtn.getAttribute("data-combo-del"));
+                var combos2 = loadCombo();
+                combos2.splice(idx2, 1);
+                saveCombo(combos2);
+                renderComboList();
+            }
+        });
+
+        document.getElementById("comboCancelBtn").addEventListener("click", function() {
+            document.getElementById("comboEditIdx").value = "-1";
+            document.getElementById("comboForm").reset();
+            document.getElementById("comboSubmitBtn").textContent = "+ Add Combo";
+            this.style.display = "none";
+        });
+
         document.getElementById("comboForm").addEventListener("submit", function(e) {
             e.preventDefault();
+            var combos = loadCombo();
+            var editIdx = Number(document.getElementById("comboEditIdx").value);
             var combo = {
                 title: document.getElementById("comboTitleInput").value.trim(),
                 originalPrice: Number(document.getElementById("comboOrigPrice").value) || 0,
@@ -343,7 +398,17 @@
                 image: document.getElementById("comboImageInput").value.trim(),
                 active: document.getElementById("comboActive").value === "true"
             };
-            saveCombo(combo);
+            if (editIdx >= 0 && editIdx < combos.length) {
+                combos[editIdx] = combo;
+            } else {
+                combos.push(combo);
+            }
+            saveCombo(combos);
+            renderComboList();
+            document.getElementById("comboEditIdx").value = "-1";
+            document.getElementById("comboForm").reset();
+            document.getElementById("comboSubmitBtn").textContent = "+ Add Combo";
+            document.getElementById("comboCancelBtn").style.display = "none";
             var msg = document.getElementById("comboSaveMsg");
             msg.textContent = "Saved!";
             setTimeout(function(){ msg.textContent = ""; }, 2500);
