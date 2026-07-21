@@ -1,263 +1,1910 @@
-/**
+﻿/**
  * Condomart - Application Frontend Execution Layer
  * Architectural Target: Vanilla Modular Reactive Functions
  */
 
 // Production Data Layer Modeling Mimicking Arogga Structure Data Outlines
+// Production Data Layer - generated from real product images (Desktop/Products)
 const DEFAULT_CATALOGUE = [
-    // ---- Condoms ----
     {
         id: "p1",
-        title: "Durex Performa Condoms (3s Pack)",
-        brand: "Durex",
+        title: "Carex Extra Time Powershot Dotted Condom 10PackMalaysia",
+        brand: "",
         category: "condoms",
-        price: 180,
+        price: 0,
         icon: "fas fa-layer-group",
-        image: "images/condom-plain.svg",
-        stock: 25
+        image: "images/condoms/Carex-Extra-Time-Powershot-Dotted-Condom---10PackMalaysia.avif",
+        stock: 0
     },
     {
         id: "p2",
-        title: "Sensation Chocolate Ribbed (10s Pack)",
-        brand: "Sensation",
+        title: "Carex Extra Time Powershot Dotted Condom 3PackMade In Malaysia",
+        brand: "",
         category: "condoms",
-        price: 220,
+        price: 0,
         icon: "fas fa-layer-group",
-        image: "images/condom-ribbed.svg",
+        image: "images/condoms/Carex-Extra-Time-Powershot-Dotted-Condom---3PackMade-In-Malaysia.avif",
+        stock: 0
+    },
+    {
+        id: "p3",
+        title: "Carex Extra Time Rough Tough Condom 10 Pcs Pack Made in Malaysia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Carex-Extra-Time-Rough-Tough-Condom-10-Pcs-Pack-Made-in-Malaysia.avif",
+        stock: 0
+    },
+    {
+        id: "p4",
+        title: "Carex Extra Time Super Thin Contoured Perfumed Condom 10Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Carex-Extra-Time-Super-Thin-Contoured-Perfumed-Condom---10Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p5",
+        title: "Celebrity Small Fit 45mm Ultra Thin Plain Silver Condom 10Pcs Pack Made in Malaysia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Celebrity-Small-Fit-45mm-Ultra-Thin-Plain-Silver-Condom---10Pcs-Pack-Made-in-Malaysia.avif",
         stock: 0
     },
     {
         id: "p6",
-        title: "Skore Textured Dot Condoms (3s)",
-        brand: "Skore",
+        title: "Celebrity Small Gold Condom 45mm Dotted Condom 10Pcs Pack From Malaysia",
+        brand: "",
         category: "condoms",
-        price: 150,
+        price: 0,
         icon: "fas fa-layer-group",
-        image: "images/condom-dot.svg",
-        stock: 18
-    },
-    {
-        id: "p9",
-        title: "Durex RealFeel Ultra Thin Condoms (10s)",
-        brand: "Durex",
-        category: "condoms",
-        price: 320,
-        icon: "fas fa-layer-group",
-        image: "images/condom-thin.svg",
-        stock: 12
-    },
-    {
-        id: "p10",
-        title: "Moods Ultra Dot Condoms (12s)",
-        brand: "Moods",
-        category: "condoms",
-        price: 260,
-        icon: "fas fa-layer-group",
-        image: "images/condom-dot.svg",
-        stock: 30
-    },
-    {
-        id: "p11",
-        title: "KamaSutra LongLast Condoms (3s)",
-        brand: "KamaSutra",
-        category: "condoms",
-        price: 160,
-        icon: "fas fa-layer-group",
-        image: "images/condom-plain.svg",
-        stock: 22
-    },
-    {
-        id: "p12",
-        title: "Skore Condom Variety Pack (6s)",
-        brand: "Skore",
-        category: "condoms",
-        price: 250,
-        icon: "fas fa-layer-group",
-        image: "images/condom-variety.svg",
-        stock: 15
-    },
-    // ---- Lubricants & Gels ----
-    {
-        id: "p3",
-        title: "K-Y Jelly Personal Lubricant 50g",
-        brand: "K-Y",
-        category: "lubricants",
-        price: 450,
-        icon: "fas fa-water",
-        image: "images/lube-bottle.svg",
-        stock: 20
+        image: "images/condoms/Celebrity-Small-Gold-Condom-45mm-Dotted-Condom---10Pcs-Pack-From-Malaysia.avif",
+        stock: 0
     },
     {
         id: "p7",
-        title: "Durex Play Saucy Strawberry Lube 50ml",
-        brand: "Durex",
-        category: "lubricants",
-        price: 580,
-        icon: "fas fa-water",
-        image: "images/lube-bottle.svg",
-        stock: 17
+        title: "Coral 3 in 1 Lubricated Natural Latex Condom Single Pack 3x1 3pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-3-in-1-Lubricated-Natural-Latex-Condom-Single-Pack-3x1-3pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p8",
+        title: "Coral Banana Flavor Extra Performance Condom Single Large Pack 10x110pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral---Banana-Flavor-Extra-Performance-Condom---Single-Large-Pack---10x110pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p9",
+        title: "Coral Condom 3 Fruit Flavours 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-3-Fruit-Flavours-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p10",
+        title: "Coral Condom 3 Ice Cream Flavours 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-3-Ice-Cream-Flavours-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p11",
+        title: "Coral Condom Banana Flavours 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-Banana-Flavours-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p12",
+        title: "Coral Condom Chocolate Flavour 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-Chocolate-Flavour-3s-Pack.avif",
+        stock: 0
     },
     {
         id: "p13",
-        title: "Durex Play Massage 2-in-1 Lube 200ml",
-        brand: "Durex",
-        category: "lubricants",
-        price: 850,
-        icon: "fas fa-water",
-        image: "images/lube-massage.svg",
-        stock: 10
+        title: "Coral Condom Extra Time Combo 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-Extra-Time-Combo-3s-Pack.avif",
+        stock: 0
     },
     {
         id: "p14",
-        title: "Astroglide Water-Based Lubricant 100ml",
-        brand: "Astroglide",
-        category: "lubricants",
-        price: 720,
-        icon: "fas fa-water",
-        image: "images/lube-water.svg",
-        stock: 14
+        title: "Coral Condom Long Lasting Extra Time 3pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-Long-Lasting-Extra-Time-3pcs-Pack.avif",
+        stock: 0
     },
     {
         id: "p15",
-        title: "Sliquid Organics Natural Lube 125ml",
-        brand: "Sliquid",
-        category: "lubricants",
-        price: 980,
-        icon: "fas fa-water",
-        image: "images/lube-water.svg",
-        stock: 9
+        title: "Coral Condom Mint Flavour 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-Mint-Flavour-3s-Pack.avif",
+        stock: 0
     },
     {
         id: "p16",
-        title: "Sliquid Silk Silicone Lube 125ml",
-        brand: "Sliquid",
-        category: "lubricants",
-        price: 1050,
-        icon: "fas fa-water",
-        image: "images/lube-silk.svg",
-        stock: 8
+        title: "Coral Condom Orange Flavours",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-Orange-Flavours.avif",
+        stock: 0
     },
     {
         id: "p17",
-        title: "Pleasure Intimate Gel Warming 50ml",
-        brand: "Intima",
-        category: "lubricants",
-        price: 560,
-        icon: "fas fa-water",
-        image: "images/lube-warming.svg",
-        stock: 11
+        title: "Coral Condom Strawberry Flavoured 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-Strawberry-Flavoured-3s-Pack.avif",
+        stock: 0
     },
-    // ---- Contraceptive & Pregnancy Test Kits ----
+    {
+        id: "p18",
+        title: "Coral Condom Supper Dotted 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-Supper-Dotted-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p19",
+        title: "Coral Condom Vanila Flavour 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Condom-Vanila-Flavour-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p20",
+        title: "Coral Long Lasting Lubricated Natural Latex Condom Single Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral---Long-Lasting-Lubricated-Natural-Latex-Condom---Single-Pack.jpeg",
+        stock: 0
+    },
+    {
+        id: "p21",
+        title: "Coral Orange Natural Latex Condom for Men single pack 3x1 3 pieces",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral---Orange-Natural-Latex-Condom-for-Men-single-pack-3x1---3-pieces.avif",
+        stock: 0
+    },
+    {
+        id: "p22",
+        title: "Coral Super Ultra Thin Lubricated Natural Latex Condom Single Pack 3x1 3pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Coral-Super-Ultra-Thin-Lubricated-Natural-Latex-Condom-Single-Pack-3x1-3pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p23",
+        title: "Durex 5 in 1 Pleasure Mix Assorted Condoms 20Pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-5-in-1-Pleasure-Mix-Assorted-Condoms-20Pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p24",
+        title: "Durex Air Ultra Thin Condom 10Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Air-Ultra-Thin-Condom---10Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p25",
+        title: "Durex Air Ultra Thin Condom 3Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Air-Ultra-Thin-Condom---3Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p26",
+        title: "Durex Close Fit Invisible 49mm Small Better Fit Ultra Thin Condom 10Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Close-Fit-Invisible-49mm-Small-Better-Fit-Ultra-Thin-Condom---10Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p27",
+        title: "Durex Extra Dots Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Dots-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p28",
+        title: "Durex Extra Dots Condoms for Men 10Pcs Pack India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Dots-Condoms-for-Men---10Pcs-Pack-India.avif",
+        stock: 0
+    },
+    {
+        id: "p29",
+        title: "Durex Extra Ribbed Condom 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Ribbed-Condom-10s-Pack.jpeg",
+        stock: 0
+    },
+    {
+        id: "p30",
+        title: "Durex Extra Ribbed Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Ribbed-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p31",
+        title: "Durex Extra Thin Bubblegum 12 Pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Thin-Bubblegum-12-Pcs.avif",
+        stock: 0
+    },
     {
         id: "p32",
-        title: "i-know Pregnancy Test Kit (1s)",
-        brand: "i-know",
-        category: "contraceptive",
-        price: 120,
-        icon: "fas fa-vial",
-        image: "images/test-kit.svg",
-        stock: 40
+        title: "Durex Extra Thin Bubblegum Flavoured Condom 3Pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Thin-Bubblegum-Flavoured-Condom---3Pcs-PackIndia.avif",
+        stock: 0
     },
     {
         id: "p33",
-        title: "Pregakem Pregnancy Test Strip (3s)",
-        brand: "Pregakem",
-        category: "contraceptive",
-        price: 180,
-        icon: "fas fa-vial",
-        image: "images/test-kit.svg",
-        stock: 35
+        title: "Durex Extra Thin Condom 10Pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Thin-Condom--10Pcs-PackIndia.avif",
+        stock: 0
     },
     {
         id: "p34",
-        title: "Trust Contraceptive Diaphragm Kit",
-        brand: "Trust",
-        category: "contraceptive",
-        price: 650,
-        icon: "fas fa-shield-alt",
-        image: "images/contraceptive.svg",
-        stock: 13
+        title: "Durex Extra Thin Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Thin-Condom-3s-Pack.avif",
+        stock: 0
     },
     {
         id: "p35",
-        title: "Emergency Contraceptive Pill (1s)",
-        brand: "Plan B",
-        category: "contraceptive",
-        price: 350,
-        icon: "fas fa-shield-alt",
-        image: "images/contraceptive.svg",
-        stock: 16
+        title: "Durex Extra Thin Intense Chocolate Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Thin-Intense-Chocolate-Condom-3s-Pack.avif",
+        stock: 0
     },
-    // ---- Delay Sprays ----
     {
         id: "p36",
-        title: "Stud 100 Delay Spray for Men 12ml",
-        brand: "Stud 100",
-        category: "delay",
-        price: 950,
-        icon: "fas fa-spray-can",
-        image: "images/delay-spray.svg",
-        stock: 7
+        title: "Durex Extra Thin Intense Chocolate Flavoured Condom 12Pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Thin-Intense-Chocolate-Flavoured-Condom-12Pcs.avif",
+        stock: 0
     },
     {
         id: "p37",
-        title: "Promescent Climax Control Spray 30ml",
-        brand: "Promescent",
-        category: "delay",
-        price: 1450,
-        icon: "fas fa-spray-can",
-        image: "images/delay-spray.svg",
-        stock: 19
+        title: "Durex Extra Thin Wild Strawberry Flavored Condom 3Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Thin-Wild-Strawberry-Flavored-Condom---3Pcs-Pack.avif",
+        stock: 0
     },
     {
         id: "p38",
-        title: "Durex Play Longer Delay Spray 20ml",
-        brand: "Durex",
-        category: "delay",
-        price: 780,
-        icon: "fas fa-spray-can",
-        image: "images/delay-spray.svg",
-        stock: 21
+        title: "Durex Extra Thin Wild Strawberry Flavoured Condom 12Pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Thin-Wild-Strawberry-Flavoured-Condom---12Pcs-PackIndia.avif",
+        stock: 0
     },
-    // ---- Pills ----
     {
         id: "p39",
-        title: "Sildenafil 50mg Tablets (4s)",
-        brand: "Generic",
-        category: "pills",
-        price: 600,
-        icon: "fas fa-pills",
-        image: "images/pill.svg",
-        stock: 26
+        title: "Durex Extra Time Condom 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Time-Condom-10s-Pack.avif",
+        stock: 0
     },
     {
         id: "p40",
-        title: "Tadalafil 10mg Tablets (2s)",
-        brand: "Generic",
-        category: "pills",
-        price: 720,
-        icon: "fas fa-pills",
-        image: "images/pill.svg",
-        stock: 23
+        title: "Durex Extra Time Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Time-Condom-3s-Pack.avif",
+        stock: 0
     },
     {
-        id: "p5",
-        title: "Panax Ginseng Vitality Capsules (30s)",
-        brand: "NutraLife",
-        category: "pills",
-        price: 1200,
-        icon: "fas fa-capsules",
-        image: "images/pill.svg",
-        stock: 14
-    }
+        id: "p41",
+        title: "Durex Extra Time Ultra Thin 3 Pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Extra-Time-Ultra-Thin---3-Pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p42",
+        title: "Durex Flavours Condom Strawberry Banana Orange Apple Combo 12s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Flavours-Condom-Strawberry-Banana-Orange-Apple-Combo---12s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p43",
+        title: "Durex Intense Condoms 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Intense-Condoms-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p44",
+        title: "Durex Invisible 003 Micro Thin Condom for Maximum Sensations 3s pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Invisible-003-Micro-Thin-Condom-for-Maximum-Sensations-3s-pack.jpeg",
+        stock: 0
+    },
+    {
+        id: "p45",
+        title: "Durex Invisible Condom 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Invisible-Condom-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p46",
+        title: "Durex Invisible Super Ultra Thin Condom 3Pcs Pack Thailand",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Invisible-Super-Ultra-Thin-Condom---3Pcs-Pack-Thailand.jpeg",
+        stock: 0
+    },
+    {
+        id: "p47",
+        title: "Durex Mutual Climax Dotted and Ribbed Condom 10Pcs Pack India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Mutual-Climax-Dotted-and-Ribbed-Condom-10Pcs-Pack-India.avif",
+        stock: 0
+    },
+    {
+        id: "p48",
+        title: "Durex Mutual Climax Dotted and Ribbed Condom 3Pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Mutual-Climax-Dotted-and-Ribbed-Condom---3Pcs-PackIndia.avif",
+        stock: 0
+    },
+    {
+        id: "p49",
+        title: "Durex Original Extra Safe Regular Fit Condom 12Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Original-Extra-Safe-Regular-Fit-Condom---12Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p50",
+        title: "Durex Pleasure Me Regular Fit Dotted Ribbed Condom 12 pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Pleasure-Me-Regular-Fit-Dotted-Ribbed-Condom---12-pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p51",
+        title: "Durex Real Feel Skin on Skin Feeling Condom 3Pcs PackThailand",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Real-Feel-Skin-on-Skin-Feeling-Condom---3Pcs-PackThailand.avif",
+        stock: 0
+    },
+    {
+        id: "p52",
+        title: "Durex Thin Feel Close Fit Condom 12 pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Thin-Feel-Close-Fit-Condom-12-pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p53",
+        title: "Durex Together Easy On Condoms 12 Pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Durex-Together-Easy-On-Condoms-12-Pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p54",
+        title: "EXS Comfy Fit Nano Thin Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/EXS-Comfy-Fit-Nano-Thin-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p55",
+        title: "EXS Comfy Fit Ribbed Dotted 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/EXS-Comfy-Fit-Ribbed-Dotted-3s-Pack.jpeg",
+        stock: 0
+    },
+    {
+        id: "p56",
+        title: "EXS Delay Extra Time 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/EXS-Delay-Extra-Time-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p57",
+        title: "EXS Glow In The Dark Condom Combo 3pcs pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/EXS---Glow-In-The-Dark-Condom---Combo-3pcs-pack.avif",
+        stock: 0
+    },
+    {
+        id: "p58",
+        title: "EXS Glow In The Dark Condom Single Pack 3x13pcs Made in UK",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/EXS---Glow-In-The-Dark-Condom---Single-Pack---3x13pcs-Made-in-UK.avif",
+        stock: 0
+    },
+    {
+        id: "p59",
+        title: "Fire Xotica Long Lasting Condom 4pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Fire-Xotica-Long-Lasting-Condom-4pcs.jpeg",
+        stock: 0
+    },
+    {
+        id: "p60",
+        title: "Hero Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Hero-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p61",
+        title: "Kamasutra Banana Flavoured Dotted Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Kamasutra-Banana-Flavoured-Dotted-Condoms-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p62",
+        title: "Kamasutra Butterscotch Flavoured Dotted Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Kamasutra-Butterscotch-Flavoured-Dotted-Condoms-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p63",
+        title: "KamaSutra Chocolate Flavoured Dotted Condom 3s Pack Made in India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/KamaSutra-Chocolate-Flavoured-Dotted-Condom-3s-Pack-Made-in-India.avif",
+        stock: 0
+    },
+    {
+        id: "p64",
+        title: "KamaSutra Dotted Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/KamaSutra-Dotted-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p65",
+        title: "Kamasutra Extra Dots Extra Pleasure Condom 10Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Kamasutra-Extra-Dots-Extra-Pleasure-Condom---10Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p66",
+        title: "KamaSutra Longlast Climax Dotted Extended Pleasure Condoms 12s Pack India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/KamaSutra-Longlast-Climax-Dotted-Extended-Pleasure-Condoms---12s-Pack-India.avif",
+        stock: 0
+    },
+    {
+        id: "p67",
+        title: "KamaSutra LongLast Extended Pleasure Climax Delay Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/KamaSutra-LongLast-Extended-Pleasure-Climax-Delay-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p68",
+        title: "Kamasutra Longlast Sync Condom 12pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Kamasutra-Longlast-Sync-Condom-12pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p69",
+        title: "Kamasutra Mango Flavoured 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Kamasutra-Mango-Flavoured-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p70",
+        title: "KamaSutra Skin FEEL Thinnest Condoms 10pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/KamaSutra-Skin-FEEL-Thinnest-Condoms---10pcs-PackIndia.jpeg",
+        stock: 0
+    },
+    {
+        id: "p71",
+        title: "KamaSutra Strawberry Flavoured Condom 3s Pack Made in India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/KamaSutra-Strawberry-Flavoured-Condom-3s-Pack-Made-in-India.avif",
+        stock: 0
+    },
+    {
+        id: "p72",
+        title: "KamaSutra SuperThin Condom 3s Pack Made in India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/KamaSutra-SuperThin-Condom-3s-Pack-Made-in-India.avif",
+        stock: 0
+    },
+    {
+        id: "p73",
+        title: "Kamasutra Vanilla Flavoured Dotted Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Kamasutra-Vanilla-Flavoured-Dotted-Condoms-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p74",
+        title: "Lust Dotted Condom 10 pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Lust-Dotted-Condom-10-pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p75",
+        title: "Manforce 342 Dots Xotic Condom Chocolate Flavour 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-342-Dots-Xotic-Condom-Chocolate-Flavour-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p76",
+        title: "Manforce Chocolate Flavoured 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Chocolate-Flavoured-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p77",
+        title: "Manforce Cocktail with Dotted Rings Hazelnut Chocolate Condom 10Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Cocktail-with-Dotted-Rings-Hazelnut-Chocolate-Condom---10Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p78",
+        title: "Manforce Cocktail with Dotted Rings Hazelnut Chocolate Condom 3Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Cocktail-with-Dotted-Rings-Hazelnut-Chocolate-Condom---3Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p79",
+        title: "Manforce Condom 1500 Dots Litchi Flavor Condom 10pcs Condom Made in India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Condom-1500-Dots-Litchi-Flavor-Condom-10pcs-Condom-Made-in-India.avif",
+        stock: 0
+    },
+    {
+        id: "p80",
+        title: "Manforce Condom 1500 Dots Litchi Flavor Condom 3pcs Condom Made in India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Condom-1500-Dots-Litchi-Flavor-Condom-3pcs-Condom-Made-in-India.jpeg",
+        stock: 0
+    },
+    {
+        id: "p81",
+        title: "Manforce Epic Desire 005 Super Thin Premium Silk Chocolate Flavour Condom 10Pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Epic-Desire-005-Super-Thin-Premium-Silk-Chocolate-Flavour-Condom---10Pcs-PackIndia.avif",
+        stock: 0
+    },
+    {
+        id: "p82",
+        title: "Manforce Epic Just skin Condom 10pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Epic-Just-skin-Condom-10pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p83",
+        title: "Manforce Epic ThinX 003 mm Thickness Ultra Thin Condom 3Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Epic-ThinX-003-mm-Thickness-Ultra-Thin-Condom---3Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p84",
+        title: "Manforce Game Exotic 3in1 Ribbed Dotted Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Game-Exotic-3in1-Ribbed-Dotted-Condoms-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p85",
+        title: "Manforce Game Exotic Flavored Condom 3pcs Pack 3in1 Ribbed Dotted Anatomically Shaped Condom",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Game-Exotic-Flavored-Condom-3pcs-Pack-3in1-Ribbed-Dotted-Anatomically-Shaped-Condom.jpeg",
+        stock: 0
+    },
+    {
+        id: "p86",
+        title: "Manforce King Dots Premium Condom 10pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-King-Dots-Premium-Condom-10pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p87",
+        title: "Manforce King Thin Premium Condoms 10pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-King-Thin-Premium-Condoms-10pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p88",
+        title: "Manforce Litchi 1740 Extra Dotted Condom 10Pcs New Pack India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Litchi-1740-Extra-Dotted-Condom---10Pcs-New-Pack-India.avif",
+        stock: 0
+    },
+    {
+        id: "p89",
+        title: "Manforce Overtime Orange Long Lasting Pleasure Condom 10Pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Overtime-Orange-Long-Lasting-Pleasure-Condom---10Pcs-PackIndia.avif",
+        stock: 0
+    },
+    {
+        id: "p90",
+        title: "Manforce Overtime Pineapple 3in1 Ribbed Contour Dotted Condom 10Pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Overtime-Pineapple-3in1-Ribbed-Contour-Dotted-Condom---10Pcs-PackIndia.avif",
+        stock: 0
+    },
+    {
+        id: "p91",
+        title: "Manforce Overtime Pineapple 3in1 Ribbed Contour Dotted Condom 3Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Overtime-Pineapple-3in1-Ribbed-Contour-Dotted-Condom---3Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p92",
+        title: "Manforce Plain Premium Condom 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Plain-Premium-Condom-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p93",
+        title: "Manforce Plain Premium Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Plain-Premium-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p94",
+        title: "Manforce Sunny Edition Ribbed Dotted Condoms 10pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Sunny-Edition-Ribbed-Dotted-Condoms---10pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p95",
+        title: "Manforce Sunny Edition Ribbed Dotted Condoms 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Sunny-Edition-Ribbed-Dotted-Condoms-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p96",
+        title: "Manforce Wild Strawberry Flavor Condoms 10pcs Pack 3in1 Dotted Ribbed Contoured Condoms Made in India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Wild-Strawberry-Flavor-Condoms-10pcs-Pack-3in1-Dotted-Ribbed-Contoured-Condoms-Made-in-India.avif",
+        stock: 0
+    },
+    {
+        id: "p97",
+        title: "Manforce Xotic Chocolate Flavored 342 Dotted Condom 3pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Xotic-Chocolate-Flavored-342-Dotted-Condom---3pcs-PackIndia.avif",
+        stock: 0
+    },
+    {
+        id: "p98",
+        title: "Manforce Xotic Strawberry 1500 Dotted Condom 3Pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Xotic-Strawberry-1500-Dotted-Condom---3Pcs-PackIndia.avif",
+        stock: 0
+    },
+    {
+        id: "p99",
+        title: "Manforce Xotic Strawberry Flavoured 1500 Dots Condom 10Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Xotic-Strawberry-Flavoured-1500-Dots-Condom---10Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p100",
+        title: "Manforce Xtra Pleasure Condom 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Manforce-Xtra-Pleasure-Condom-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p101",
+        title: "Mingliu Close Fit Condom 10pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Mingliu-Close-Fit-Condom-10pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p102",
+        title: "Moods All Night Condom 3 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-All-Night-Condom-3-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p103",
+        title: "Moods Bubblegum Flavored Condom 3 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Bubblegum-Flavored-Condom-3-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p104",
+        title: "Moods Choco Condom 3pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Choco-Condom-3pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p105",
+        title: "Moods Choco Flavored Condom 12 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Choco-Flavored-Condom-12-pcs-Pack.jpeg",
+        stock: 0
+    },
+    {
+        id: "p106",
+        title: "Moods Dotted Condom Blue 10 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Dotted-Condom-Blue-10-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p107",
+        title: "Moods Dotted Condom Blue 3 pcs pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Dotted-Condom-Blue-3-pcs-pack.avif",
+        stock: 0
+    },
+    {
+        id: "p108",
+        title: "Moods Dotted Green Condom Green 10 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Dotted-Green-Condom-Green-10-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p109",
+        title: "Moods Gold Electrify Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Gold-Electrify-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p110",
+        title: "Moods Grapes Flavored Condom 12 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Grapes-Flavored-Condom-12-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p111",
+        title: "Moods Grapes Flavored Condom 3pcs pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Grapes-Flavored-Condom-3pcs-pack.avif",
+        stock: 0
+    },
+    {
+        id: "p112",
+        title: "Moods Hotspots Scented with 1500 Dots Condom 3s PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Hotspots-Scented-with-1500-Dots-Condom-3s-PackIndia.avif",
+        stock: 0
+    },
+    {
+        id: "p113",
+        title: "Moods Joyride Condom 3pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Joyride-Condom-3pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p114",
+        title: "Moods Panache Dotted Condom 12 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Panache-Dotted-Condom-12-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p115",
+        title: "Moods Panache Dotted Condom 3 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Panache-Dotted-Condom-3-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p116",
+        title: "Moods Panache Ultra Thin Condom 3 pcs pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Panache-Ultra-Thin-Condom-3-pcs-pack.avif",
+        stock: 0
+    },
+    {
+        id: "p117",
+        title: "Moods Ribbed Condom 12 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Ribbed-Condom-12-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p118",
+        title: "Moods Ribbed Condom 3 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Ribbed-Condom-3-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p119",
+        title: "Moods Silver 1500 Dots Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Silver-1500-Dots-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p120",
+        title: "Moods Silver 1500 Dots Condoms 12s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Silver-1500-Dots-Condoms-12s-Pack.jpeg",
+        stock: 0
+    },
+    {
+        id: "p121",
+        title: "Moods Strawberry Flavored Condom 12 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Strawberry-Flavored-Condom-12-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p122",
+        title: "Moods Strawberry Flavored Condom 3 pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Moods-Strawberry-Flavored-Condom-3-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p123",
+        title: "Olo Ha For Man Zero Ultra Thin Condom Blue 10Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Olo-Ha-For-Man-Zero-Ultra-Thin-Condom-Blue---10Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p124",
+        title: "Oxballs Big Dick Deep Red Reusable Condom 36g Length 152mm Wide 42mm",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Oxballs-Big-Dick-Deep-Red-Reusable-Condom-36g-Length--152mm-Wide--42mm.avif",
+        stock: 0
+    },
+    {
+        id: "p125",
+        title: "Panther Banana Dotted Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Panther-Banana-Dotted-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p126",
+        title: "Panther Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Panther-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p127",
+        title: "Sensation Super Dotted Scented Strawberry Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Sensation-Super-Dotted-Scented-Strawberry-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p128",
+        title: "Skins Dots Ribs Premium Condom 4s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skins-Dots-Ribs-Premium-Condom-4s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p129",
+        title: "Skins Ultra Thin Premium Condom 4s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skins-Ultra-Thin-Premium-Condom-4s-Pack.jpeg",
+        stock: 0
+    },
+    {
+        id: "p130",
+        title: "Skore Banana 1500 Dots Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Banana-1500-Dots-Condoms-10s-Pack.jpeg",
+        stock: 0
+    },
+    {
+        id: "p131",
+        title: "Skore Banana 1500Dots Condoms 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Banana-1500Dots-Condoms-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p132",
+        title: "Skore Blues Vanilla Scented Coloured Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Blues-Vanilla-Scented-Coloured-Condoms-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p133",
+        title: "Skore Cherry Flavored 1500 Dotted with Extra Lubrication Condom 10pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Cherry-Flavored-1500-Dotted-with-Extra-Lubrication-Condom---10pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p134",
+        title: "Skore Cherry Flavored 1500 Dotted with Extra Lubrication Condom 3Pcs Pack NewIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Cherry-Flavored-1500-Dotted-with-Extra-Lubrication-Condom---3Pcs-Pack-NewIndia.avif",
+        stock: 0
+    },
+    {
+        id: "p135",
+        title: "Skore Chocolate Flavoured 1500 Dots Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Chocolate-Flavoured-1500-Dots-Condoms-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p136",
+        title: "Skore Chocolate Flavoured 1500 Dots Condoms 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Chocolate-Flavoured-1500-Dots-Condoms-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p137",
+        title: "Skore Cool With Mint Sensation Dotted Ribbed Condom 3Pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Cool-With-Mint-Sensation-Dotted-Ribbed-Condom---3Pcs-PackIndia.avif",
+        stock: 0
+    },
+    {
+        id: "p138",
+        title: "Skore Dessert Premium Flavoured Condoms 1 pack 10pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Dessert-Premium-Flavoured-Condoms-1-pack-10pcs.jpeg",
+        stock: 0
+    },
+    {
+        id: "p139",
+        title: "Skore Dots 1500 Dotted Vanilla Flavoured Condom 10pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Dots-1500-Dotted-Vanilla-Flavoured-Condom---10pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p140",
+        title: "Skore Nothing Climax Delays Long Lasting Condom 3Pcs PackIndia",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Nothing-Climax-Delays-Long-Lasting-Condom---3Pcs-PackIndia.jpeg",
+        stock: 0
+    },
+    {
+        id: "p141",
+        title: "Skore Nothing Thinnest Chocolate Flavoured Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Nothing-Thinnest-Chocolate-Flavoured-Condoms-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p142",
+        title: "Skore Nothing Thinnest Climax Delay Flavoured Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Nothing-Thinnest-Climax-Delay-Flavoured-Condoms-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p143",
+        title: "Skore Not Out Climax Delay Dotted Condoms 10pcs Pack Made in India",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Not-Out-Climax-Delay-Dotted-Condoms-10pcs-Pack-Made-in-India.avif",
+        stock: 0
+    },
+    {
+        id: "p144",
+        title: "Skore Orange 1500 Dots Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Orange-1500-Dots-Condoms-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p145",
+        title: "Skore Orange 1500Dots Condoms 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Orange-1500Dots-Condoms-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p146",
+        title: "Skore Pina Colada Condom 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Pina-Colada-Condom-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p147",
+        title: "Skore Shade Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Shade-Condom-3s-Pack.jpeg",
+        stock: 0
+    },
+    {
+        id: "p148",
+        title: "Skore Strawberry 1500 Dotted with Extra Lubrication Condom 10Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Strawberry-1500-Dotted-with-Extra-Lubrication-Condom---10Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p149",
+        title: "Skore Strawberry 1500 Dotted with Extra Lubrication Condom 3Pcs Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Strawberry-1500-Dotted-with-Extra-Lubrication-Condom---3Pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p150",
+        title: "Skore Timeless Climax Delay Dotted Ribbed Condom 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Timeless-Climax-Delay-Dotted-Ribbed-Condom---10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p151",
+        title: "Skore Timeless Climax Delay Dotted Ribbed Condom 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Timeless-Climax-Delay-Dotted-Ribbed-Condom---10s-Pack.png",
+        stock: 0
+    },
+    {
+        id: "p152",
+        title: "Skore Warm Condom 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-Warm-Condom-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p153",
+        title: "Skore ZigZag Dotted Ribbed Condoms 10s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Skore-ZigZag-Dotted-Ribbed-Condoms-10s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p154",
+        title: "Tiger Anatomic Rose Flavor Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Tiger-Anatomic-Rose-Flavor-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p155",
+        title: "Tiger Gold Banana Flavor Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Tiger-Gold-Banana-Flavor-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p156",
+        title: "Tiger Plain Strawberry Flavored Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Tiger-Plain-Strawberry-Flavored-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p157",
+        title: "Tiger Ribbed Strawberry Flavor Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Tiger-Ribbed-Strawberry-Flavor-Condom-3s-Pack.jpeg",
+        stock: 0
+    },
+    {
+        id: "p158",
+        title: "Tiger Super Dotted Chocolate Flavored Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Tiger-Super-Dotted-Chocolate-Flavored-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p159",
+        title: "Tiger Super Dotted Orange Flavored Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Tiger-Super-Dotted-Orange-Flavored-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p160",
+        title: "Tiger Super Dotted Rose Flavored Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Tiger-Super-Dotted-Rose-Flavored-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p161",
+        title: "Tiger Ultra Thin Rose Flavored Condom 3s pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Tiger-Ultra-Thin-Rose-Flavored-Condom-3s-pack.avif",
+        stock: 0
+    },
+    {
+        id: "p162",
+        title: "Xtreme Ultra Thin Premium Condom 3s Pack",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Xtreme-Ultra-Thin-Premium-Condom-3s-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p163",
+        title: "Yommee 001 Explore Pleasure Natural Latex Rubber Condom with Hyaluronic Acid 10pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Yommee-001-Explore-Pleasure-Natural-Latex-Rubber-Condom-with-Hyaluronic-Acid-10pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p164",
+        title: "Yommee 001 Upgrade Pleasure Natural Latex Rubber Condom 10pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Yommee-001-Upgrade-Pleasure-Natural-Latex-Rubber-Condom-10pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p165",
+        title: "Yommee Tea Mold Tight Form Tight Fitting Long Lasting Condom 10pcs",
+        brand: "",
+        category: "condoms",
+        price: 0,
+        icon: "fas fa-layer-group",
+        image: "images/condoms/Yommee-Tea-Mold-Tight-Form---Tight-Fitting-Long-Lasting-Condom-10pcs.avif",
+        stock: 0
+    },
+    {
+        id: "p166",
+        title: "Cupid Water Based Lubricant Jelly Lube Gel 82gm",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Cupid-Water-Based-Lubricant-Jelly-Lube-Gel---82gm.avif",
+        stock: 0
+    },
+    {
+        id: "p167",
+        title: "Durex KY Personal Lubricant Gel for Comfort 50g",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Durex-KY-Personal-Lubricant-Gel-for-Comfort-50g.avif",
+        stock: 0
+    },
+    {
+        id: "p168",
+        title: "Durex Play Classic H2O Lube Smooth Glide Gel 3 Sachets",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Durex-Play-Classic-H2O-Lube-Smooth-Glide-Gel-3-Sachets.avif",
+        stock: 0
+    },
+    {
+        id: "p169",
+        title: "Durex Play Classic H2O Water Based Lubricant Lube Gel 100ml Thailand",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Durex-Play-Classic-H2O-Water-Based-Lubricant-Lube-Gel-100ml-Thailand.avif",
+        stock: 0
+    },
+    {
+        id: "p170",
+        title: "Durex Play Classic H2O Water Based Lubricant Lube Gel 50ml Thailand",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Durex-Play-Classic-H2O-Water-Based-Lubricant-Lube-Gel--50ml-Thailand.avif",
+        stock: 0
+    },
+    {
+        id: "p171",
+        title: "Durex Play Sweet Strawberry Lube 100ml",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Durex-Play-Sweet-Strawberry-Lube-100ml.avif",
+        stock: 0
+    },
+    {
+        id: "p172",
+        title: "Durex Play Sweet Strawberry Lube 50ml",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Durex-Play-Sweet-Strawberry-Lube-50ml.avif",
+        stock: 0
+    },
+    {
+        id: "p173",
+        title: "Durex Play Tingle H2O Tingling Lubricant Water Based Lube Gel 100ml",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Durex-Play-Tingle-H2O-Tingling-Lubricant-Water-Based-Lube-Gel-100ml.avif",
+        stock: 0
+    },
+    {
+        id: "p174",
+        title: "Durex Play Warming Lubricant Water based Lube Gel 100ml",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Durex-Play-Warming-Lubricant-Water-based-Lube-Gel-100ml.avif",
+        stock: 0
+    },
+    {
+        id: "p175",
+        title: "Durex Play Warming Lubricant Water based Lube Gel 50ml",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Durex-Play-Warming-Lubricant-Water-based-Lube-Gel---50ml.avif",
+        stock: 0
+    },
+    {
+        id: "p176",
+        title: "EXS Choco Lube 100ml",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/EXS-Choco-Lube-100ml.avif",
+        stock: 0
+    },
+    {
+        id: "p177",
+        title: "EXS Peach Natural Flavoured 50ml",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/EXS-Peach-Natural-Flavoured-50ml.avif",
+        stock: 0
+    },
+    {
+        id: "p178",
+        title: "Fun Time Cherry Flavoured Lube Safe Fun 75ml",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Fun-Time-Cherry-Flavoured-Lube-Safe-Fun-75ml.avif",
+        stock: 0
+    },
+    {
+        id: "p179",
+        title: "KA Ya Lube China 50g",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/KA-Ya-Lube-China-50g.avif",
+        stock: 0
+    },
+    {
+        id: "p180",
+        title: "KY Jelly Personal Lubricant Gel 50g",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/KY-Jelly-Personal-Lubricant-Gel-50g.jpeg",
+        stock: 0
+    },
+    {
+        id: "p181",
+        title: "Manforce Epic Lube Strawberry Flavored Lubricant Gel 60ml",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/lubricants/Manforce-Epic-Lube-Strawberry-Flavored-Lubricant-Gel---60ml.avif",
+        stock: 0
+    },
+    {
+        id: "p182",
+        title: "Skore Blue Coloured With Vanilla Flavoured Condom 3Pcs Pack India",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/condoms/Skore-Blue-Coloured-With-Vanilla-Flavoured-Condom---3Pcs-Pack-India.avif",
+        stock: 0
+    },
+    {
+        id: "p183",
+        title: "Skore Duo Max Condom 10 pcs Pack",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/condoms/Skore-Duo-Max-Condom-10-pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p184",
+        title: "Skore Nothing Thinnest Strawberry Flavored Condoms 10pcs Pack",
+        brand: "",
+        category: "lubricants",
+        price: 0,
+        icon: "fas fa-water",
+        image: "images/condoms/Skore-Nothing-Thinnest-Strawberry-Flavored-Condoms-10pcs-Pack.avif",
+        stock: 0
+    },
+    {
+        id: "p185",
+        title: "i Know Pregnancy Test Kit 1pc I Urine Pregnancy Kit at Home",
+        brand: "",
+        category: "contraceptive",
+        price: 0,
+        icon: "fas fa-vial",
+        image: "images/contraceptive/i-Know-Pregnancy-Test-Kit-1pc-I-Urine-Pregnancy-Kit-at-Home.avif",
+        stock: 0
+    },
+    {
+        id: "p186",
+        title: "Pregnancy HCG Test Kit CupiSure",
+        brand: "",
+        category: "contraceptive",
+        price: 0,
+        icon: "fas fa-vial",
+        image: "images/contraceptive/Pregnancy-HCG-Test-Kit-CupiSure.png",
+        stock: 0
+    },
+    {
+        id: "p187",
+        title: "Pregnancy HCG Test Midstream Get Sure",
+        brand: "",
+        category: "contraceptive",
+        price: 0,
+        icon: "fas fa-vial",
+        image: "images/contraceptive/Pregnancy-HCG-Test-Midstream-Get-Sure.avif",
+        stock: 0
+    },
+    {
+        id: "p188",
+        title: "Pregnancy HCG Test Midstream Strip Get Sure",
+        brand: "",
+        category: "contraceptive",
+        price: 0,
+        icon: "fas fa-vial",
+        image: "images/contraceptive/Pregnancy-HCG-Test-Midstream-Strip-Get-Sure.avif",
+        stock: 0
+    },
+    {
+        id: "p189",
+        title: "Procomil Long Time Anti Premature Ejaculation Delay Spray for Men Original Germany",
+        brand: "",
+        category: "delay",
+        price: 0,
+        icon: "fas fa-spray-can",
+        image: "images/delay/Procomil-Long-Time-Anti-Premature-Ejaculation-Delay-Spray-for-Men---Original-Germany.avif",
+        stock: 0
+    },
 ];
+
 
 // Category Representative Image Mapping (locally stored, discreet generic imagery)
 const CATEGORY_IMAGES = {
-    "condoms":       "images/condom-plain.svg",
-    "lubricants":    "images/lube-bottle.svg",
-    "contraceptive": "images/contraceptive.svg",
-    "delay":         "images/delay-spray.svg",
+    "condoms":       "images/condoms/Durex-Extra-Thin-Condom-3s-Pack.avif",
+    "lubricants":    "images/lubricants/KY-Jelly-Personal-Lubricant-Gel-50g.jpeg",
+    "contraceptive": "images/contraceptive/i-Know-Pregnancy-Test-Kit-1pc-I-Urine-Pregnancy-Kit-at-Home.avif",
+    "delay":         "images/delay/Procomil-Long-Time-Anti-Premature-Ejaculation-Delay-Spray-for-Men---Original-Germany.avif",
     "pills":         "images/pill.svg"
 };
 
@@ -268,10 +1915,17 @@ function getProductImage(product) {
 
 // Product persistence (admin can add/edit/delete; falls back to defaults)
 const PRODUCTS_STORAGE_KEY = "condomart_products";
+const PRODUCTS_VERSION_KEY = "condomart_products_version";
+const PRODUCTS_VERSION = "3"; // bump when default catalogue / images change
 const VALID_CATEGORIES = ["condoms", "lubricants", "contraceptive", "delay", "pills"];
 
 function loadProducts() {
     try {
+        // Ignore outdated cached catalogue so catalogue/image updates are picked up
+        if (localStorage.getItem(PRODUCTS_VERSION_KEY) !== PRODUCTS_VERSION) {
+            localStorage.removeItem(PRODUCTS_STORAGE_KEY);
+            localStorage.setItem(PRODUCTS_VERSION_KEY, PRODUCTS_VERSION);
+        }
         const stored = JSON.parse(localStorage.getItem(PRODUCTS_STORAGE_KEY));
         if (Array.isArray(stored) && stored.length) {
             // Drop any products whose category is no longer valid (cleanup after category changes)
@@ -352,7 +2006,21 @@ document.addEventListener("DOMContentLoaded", () => {
     initMobileNav();
     renderCart();
     renderWishlistBadge();
+    initHeroMarquee();
 });
+
+function initHeroMarquee() {
+    const leftTrack = document.getElementById("heroMarqueeLeft");
+    const rightTrack = document.getElementById("heroMarqueeRight");
+    if (!leftTrack || !rightTrack) return;
+    const allImages = PRODUCT_CATALOGUE.map(p => getProductImage(p)).filter(Boolean);
+    if (allImages.length === 0) return;
+    function buildRow(imgs) {
+        return imgs.map(src => `<img src="${src}" alt="">`).join("");
+    }
+    leftTrack.innerHTML  = buildRow(allImages) + buildRow(allImages);
+    rightTrack.innerHTML = buildRow([...allImages].reverse()) + buildRow([...allImages].reverse());
+}
 
 /**
  * Navigation Structural Interaction Hooks
@@ -403,14 +2071,14 @@ function initCatalogView(products) {
         targetGrid.innerHTML = `
             <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--color-text-muted);">
                 <i class="fas fa-search-minus" style="font-size: 3rem; margin-bottom: 10px;"></i>
-                <p>No matching wellness products found. Please try refining your query criteria.</p>
+                <p>কোনো ম্যাচিং প্রোডাক্ট পাওয়া যায়নি। আবার সার্চ করে দেখুন।</p>
             </div>
         `;
-        counterLabel.textContent = "0 products found";
+        counterLabel.textContent = "0 product পাওয়া যায়নি";
         return;
     }
 
-    counterLabel.textContent = `Showing ${products.length} verified item(s)`;
+    counterLabel.textContent = `${products.length} টি প্রোডাক্ট পাওয়া গেছে`;
 
     // Process collection structural mapping array loops
     products.forEach(product => {
@@ -432,14 +2100,14 @@ function initCatalogView(products) {
             <span class="product-brand">${product.brand}</span>
             <h3 class="product-title">${product.title}</h3>
             <div class="product-meta-row">
-                <span class="product-price">৳ ${product.price}</span>
+                <span class="product-price">à§³ ${product.price}</span>
                 <span class="discreet-badge" title="Guaranteed Secure Outer Packaging">
                     <i class="fas fa-user-secret"></i> Private Box
                 </span>
             </div>
             <div class="product-card-actions">
                 <button class="btn-add-cart" data-add="${product.id}" ${product.stock <= 0 ? 'disabled' : ''}>
-                    ${product.stock <= 0 ? 'Out of Stock' : 'Add to Cart'}
+                    ${product.stock <= 0 ? 'স্টক নেই' : 'কার্টে যোগ করুন'}
                 </button>
                 <button class="btn-quickview" data-view="${product.id}" aria-label="Quick view">
                     <i class="fas fa-eye"></i>
@@ -451,7 +2119,7 @@ function initCatalogView(products) {
 }
 
 function getStockBadge(stock) {
-    if (stock <= 0) return `<span class="stock-badge out">Out of Stock</span>`;
+    if (stock <= 0) return `<span class="stock-badge out">স্টক নেই</span>`;
     if (stock <= 10) return `<span class="stock-badge low">Only ${stock} left</span>`;
     return `<span class="stock-badge in">In Stock</span>`;
 }
@@ -583,7 +2251,7 @@ function initCartPanel() {
             if (addBtn.disabled) return;
             executeCartIncrement(addBtn.getAttribute("data-add"));
             openPanel();
-            showToast("Added to basket");
+            showToast("কার্টে যোগ হয়েছে");
             return;
         }
         const wishBtn = e.target.closest("[data-wish]");
@@ -593,7 +2261,7 @@ function initCartPanel() {
             wishBtn.classList.toggle("active", active);
             wishBtn.querySelector("i").className = active ? "fas fa-heart" : "far fa-heart";
             renderWishlistBadge();
-            showToast(active ? "Saved to wishlist" : "Removed from wishlist");
+            showToast(active ? "উইশলিস্টে সেভ হয়েছে" : "উইশলিস্ট থেকে সরানো হয়েছে");
             return;
         }
         const viewBtn = e.target.closest("[data-view]");
@@ -624,7 +2292,7 @@ function renderCart() {
 
     if (badge) badge.textContent = totalQty;
     if (link) link.setAttribute("aria-label", `Shopping Basket, ${totalQty} items`);
-    if (totalEl) totalEl.textContent = "৳ " + totalPrice;
+    if (totalEl) totalEl.textContent = "à§³ " + totalPrice;
 
     // Micro visual feedback on badge
     if (badge) {
@@ -636,7 +2304,7 @@ function renderCart() {
         body.innerHTML = `
             <div class="cart-empty">
                 <i class="fas fa-shopping-basket"></i>
-                <p>Your basket is empty.</p>
+                <p>আপনার বাস্কেট খালি।</p>
             </div>
         `;
         return;
@@ -651,14 +2319,14 @@ function renderCart() {
                 <div class="cart-item-info">
                     <span class="cart-item-brand">${p.brand}</span>
                     <h4 class="cart-item-title">${p.title}</h4>
-                    <span class="cart-item-price">৳ ${p.price} each</span>
+                    <span class="cart-item-price">à§³ ${p.price} প্রতিটি</span>
                 </div>
                 <div class="cart-item-controls">
-                    <button class="qty-btn" data-dec="${id}" aria-label="Decrease quantity">−</button>
+                    <button class="qty-btn" data-dec="${id}" aria-label="Decrease quantity">âˆ’</button>
                     <span class="qty-value">${entry.qty}</span>
                     <button class="qty-btn" data-inc="${id}" aria-label="Increase quantity">+</button>
                 </div>
-                <div class="cart-item-subtotal">৳ ${p.price * entry.qty}</div>
+                <div class="cart-item-subtotal">à§³ ${p.price * entry.qty}</div>
             </div>
         `;
     }).join("");
@@ -698,7 +2366,7 @@ function initWishlistPanel() {
             executeCartIncrement(add.getAttribute("data-wadd"));
             const cp = document.getElementById("cartPanel");
             cp.classList.add("open"); document.getElementById("cartOverlay").classList.add("open");
-            showToast("Added to basket");
+            showToast("কার্টে যোগ হয়েছে");
             open();
             return;
         }
@@ -720,7 +2388,7 @@ function renderWishlistPanel() {
     if (!body) return;
     const list = loadWishlist();
     if (list.length === 0) {
-        body.innerHTML = `<div class="cart-empty"><i class="fas fa-heart"></i><p>Your wishlist is empty.</p></div>`;
+        body.innerHTML = `                <div class="cart-empty"><i class="fas fa-heart"></i><p>আপনার উইশলিস্ট খালি।</p></div>`;
         return;
     }
     body.innerHTML = list.map(id => {
@@ -732,7 +2400,7 @@ function renderWishlistPanel() {
                 <div class="cart-item-info">
                     <span class="cart-item-brand">${p.brand}</span>
                     <h4 class="cart-item-title">${p.title}</h4>
-                    <span class="cart-item-price">৳ ${p.price}</span>
+                    <span class="cart-item-price">à§³ ${p.price}</span>
                 </div>
                 <div class="cart-item-controls" style="grid-area:controls;">
                     <button class="qty-btn" data-wadd="${id}"><i class="fas fa-cart-plus"></i></button>
@@ -855,11 +2523,11 @@ function updateLocationDisplays() {
     const nameEls = document.querySelectorAll(".loc-name");
     nameEls.forEach(el => el.textContent = cur.name);
     const feeTop = document.getElementById("locFeeTop");
-    if (feeTop) feeTop.textContent = "৳" + cur.fee;
+    if (feeTop) feeTop.textContent = "à§³" + cur.fee;
     const areaName = document.getElementById("deliveryAreaName");
     if (areaName) areaName.textContent = cur.name;
     const feeEl = document.getElementById("deliveryFee");
-    if (feeEl) feeEl.textContent = "৳" + cur.fee;
+    if (feeEl) feeEl.textContent = "à§³" + cur.fee;
 }
 
 function initLocationMenu(cfg) {
@@ -874,12 +2542,12 @@ function initLocationMenu(cfg) {
         const q = filter.trim().toLowerCase();
         const areas = DELIVERY_AREAS.filter(a => a.name.toLowerCase().includes(q));
         if (areas.length === 0) {
-            list.innerHTML = `<div class="loc-empty">No area found.</div>`;
+            list.innerHTML = `<div class="loc-empty">কোনো এলাকা পাওয়া যায়নি।</div>`;
             return;
         }
         list.innerHTML = areas.map(a =>
             `<button class="loc-option ${a.id === cur.id ? 'active' : ''}" data-loc="${a.id}">
-                <span>${a.name}</span> <span class="loc-opt-fee">৳${a.fee}</span>
+                <span>${a.name}</span> <span class="loc-opt-fee">à§³${a.fee}</span>
             </button>`
         ).join("");
     };
@@ -890,7 +2558,7 @@ function initLocationMenu(cfg) {
         const nameEl = btn.querySelector(".loc-name");
         const feeEl = btn.querySelector(".loc-fee");
         if (nameEl) nameEl.textContent = cur.name;
-        if (feeEl) feeEl.textContent = "৳" + cur.fee;
+        if (feeEl) feeEl.textContent = "à§³" + cur.fee;
         if (list) renderList(searchInput ? searchInput.value : "");
     };
     render();
@@ -961,16 +2629,16 @@ function openQuickView(id) {
     const product = PRODUCT_CATALOGUE.find(p => p.id === id);
     if (!product) return;
     const modal = document.getElementById("quickViewModal");
-    const desc = product.description || `${product.brand} ${product.title} — delivered in a 100% discreet, unbranded box. Genuine product with confidential billing.`;
+    const desc = product.description || `${product.brand} ${product.title} — ১০০% ডিসক্রিট বক্সে ডেলিভারি হবে। অথেন্টিক প্রোডাক্ট, গোপনীয় বিলিং।`;
     modal.querySelector("#qvImage").src = getProductImage(product);
     modal.querySelector("#qvBrand").textContent = product.brand;
     modal.querySelector("#qvTitle").textContent = product.title;
-    modal.querySelector("#qvPrice").textContent = "৳ " + product.price;
+    modal.querySelector("#qvPrice").textContent = "à§³ " + product.price;
     modal.querySelector("#qvDesc").textContent = desc;
     modal.querySelector("#qvStock").innerHTML = getStockBadge(product.stock);
     const addBtn = modal.querySelector("#qvAdd");
     addBtn.disabled = product.stock <= 0;
-    addBtn.textContent = product.stock <= 0 ? "Out of Stock" : "Add to Cart";
+    addBtn.textContent = product.stock <= 0 ? "স্টক নেই" : "কার্টে যোগ করুন";
     addBtn.onclick = () => {
         if (product.stock <= 0) return;
         executeCartIncrement(id);
@@ -979,7 +2647,7 @@ function openQuickView(id) {
         document.getElementById("cartOverlay").classList.add("open");
         panel.setAttribute("aria-hidden", "false");
         modal.classList.remove("open");
-        showToast("Added to basket");
+        showToast("কার্টে যোগ হয়েছে");
     };
     modal.classList.add("open");
 }
@@ -998,9 +2666,9 @@ function updateCheckoutTotals() {
     const subEl = document.getElementById("checkoutSubtotal");
     const feeEl = document.getElementById("checkoutFee");
     const totEl = document.getElementById("checkoutTotal");
-    if (subEl) subEl.textContent = "৳ " + sub;
-    if (feeEl) feeEl.textContent = "৳ " + (sub > 0 ? loc.fee : 0);
-    if (totEl) totEl.textContent = "৳ " + total;
+    if (subEl) subEl.textContent = "à§³ " + sub;
+    if (feeEl) feeEl.textContent = "à§³ " + (sub > 0 ? loc.fee : 0);
+    if (totEl) totEl.textContent = "à§³ " + total;
 }
 function openCheckout() {
     const modal = document.getElementById("checkoutModal");
@@ -1025,7 +2693,7 @@ function renderCheckoutItems() {
     const ids = Object.keys(cartState.items);
     wrap.innerHTML = ids.map(id => {
         const e = cartState.items[id];
-        return `<div class="co-item"><span>${e.product.title} × ${e.qty}</span><span>৳ ${e.product.price * e.qty}</span></div>`;
+        return `<div class="co-item"><span>${e.product.title} Ã— ${e.qty}</span><span>à§³ ${e.product.price * e.qty}</span></div>`;
     }).join("");
 }
 function initCheckout() {
@@ -1089,8 +2757,8 @@ function initCheckout() {
         document.getElementById("cartOverlay").classList.remove("open");
         modal.classList.remove("open");
         form.reset();
-        showToast("Order placed! ID: " + order.id);
-        alert("Thank you! Your discreet COD order " + order.id + " is confirmed.");
+        showToast("অর্ডার প্লেস হয়েছে! ID: " + order.id);
+        alert("ধন্যবাদ! আপনার অর্ডার " + order.id + " কনফার্ম হয়েছে।");
     });
 }
 
@@ -1102,8 +2770,8 @@ window.executeCartIncrement = function(productId) {
     if (!product) return;
 
     const current = cartState.items[productId] ? cartState.items[productId].qty : 0;
-    if (product.stock <= 0) { showToast("Out of stock"); return; }
-    if (current >= product.stock) { showToast("Max stock reached"); return; }
+    if (product.stock <= 0) { showToast("স্টক নেই"); return; }
+    if (current >= product.stock) { showToast("সর্বোচ্চ স্টক পৌঁছে গেছে"); return; }
 
     if (!cartState.items[productId]) {
         cartState.items[productId] = { product, qty: 0 };
@@ -1147,22 +2815,22 @@ function initAccount() {
         if (mode === "register") {
             nameInput.style.display = "block";
             nameInput.previousElementSibling.style.display = "block";
-            submitBtn.textContent = "Create Account";
-            toggleText.textContent = "Already have an account?";
-            toggleLink.textContent = "Login";
+            submitBtn.textContent = "অ্যাকাউন্ট তৈরি করুন";
+            toggleText.textContent = "ইতিমধ্যে অ্যাকাউন্ট আছে?";
+            toggleLink.textContent = "লগইন করুন";
         } else {
             nameInput.style.display = "none";
             nameInput.previousElementSibling.style.display = "none";
-            submitBtn.textContent = "Login";
-            toggleText.textContent = "New to Condomart?";
-            toggleLink.textContent = "Create Account";
+            submitBtn.textContent = "লগইন করুন";
+            toggleText.textContent = "নতুন কনডোমার্টে?";
+            toggleLink.textContent = "অ্যাকাউন্ট তৈরি করুন";
         }
     };
 
     const openModal = () => {
         const acc = getAccount();
         if (acc) { // already logged in -> logout option
-            if (confirm("Logged in as " + acc.name + ". Logout?")) {
+            if (confirm("লগইন করা আছে: " + acc.name + "। লগআউট করবেন?")) {
                 localStorage.removeItem(ACCOUNT_STORAGE_KEY);
                 updateAccountUI();
             }
@@ -1188,7 +2856,7 @@ function initAccount() {
 
         if (mode === "register") {
             if (accounts[email]) {
-                alert("An account with this email already exists. Please login.");
+                alert("এই ইমেইল দিয়ে ইতিমধ্যে অ্যাকাউন্ট আছে। দয়া করে লগইন করুন।");
                 setMode("login");
                 return;
             }
@@ -1197,16 +2865,16 @@ function initAccount() {
             localStorage.setItem("condomart_users", JSON.stringify(accounts));
             const acc = { name, email };
             saveAccount(acc);
-            alert("Account created successfully. Welcome, " + name + "!");
+            alert("অ্যাকাউন্ট তৈরি হয়েছে। স্বাগতম, " + name + "!");
         } else {
             const user = accounts[email];
             if (!user || user.pass !== pass) {
-                alert("Invalid email or password.");
+                alert("ভুল ইমেইল বা পাসওয়ার্ড।");
                 return;
             }
             const acc = { name: user.name, email };
             saveAccount(acc);
-            alert("Welcome back, " + user.name + "!");
+            alert("স্বাগতম পুনরায়, " + user.name + "!");
         }
 
         closeModal();
@@ -1220,7 +2888,7 @@ function initAccount() {
             accountText.textContent = acc.name.split(" ")[0];
             accountButton.setAttribute("aria-label", "Logged in as " + acc.name);
         } else {
-            accountText.textContent = "Account";
+            accountText.textContent = "অ্যাকাউন্ট";
         }
     }
 
@@ -1240,3 +2908,7 @@ window.addEventListener("storage", (e) => {
         renderCart();
     }
 });
+
+
+
+

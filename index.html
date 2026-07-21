@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
     <!-- FontAwesome for accessible vector iconography -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Core UI stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 
@@ -34,6 +37,7 @@
             </button>
 
             <a href="#" class="logo" aria-label="Condomart Home">
+                <img class="logo-img" src="images/NEW protfolio.png" alt="Condomart">
                 <span class="logo-accent">Condo</span>mart
             </a>
 
@@ -41,7 +45,7 @@
             <div class="search-container">
                 <form class="search-form" id="searchForm" role="search" onsubmit="event.preventDefault();">
                     <label for="searchInput" class="visually-hidden">Search sexual wellness products</label>
-                    <input type="search" id="searchInput" placeholder="Search brands, types, or care products..." aria-label="Search through site products">
+                    <input type="search" id="searchInput" placeholder="সার্চ করুন প্রোডাক্ট, ব্র্যান্ড..." aria-label="Search through site products">
                     <button type="submit" aria-label="Submit Search"><i class="fas fa-search" aria-hidden="true"></i></button>
                 </form>
             </div>
@@ -50,19 +54,19 @@
             <div class="header-utilities">
                 <a href="javascript:void(0)" class="utility-link" id="accountButton" aria-label="User Account Profile">
                     <i class="fas fa-user-circle" aria-hidden="true"></i>
-                    <span class="utility-text" id="accountText">Account</span>
+                    <span class="utility-text" id="accountText">অ্যাকাউন্ট</span>
                 </a>
                 <a href="javascript:void(0)" class="utility-link" id="wishlistButton" aria-label="Wishlist">
                     <i class="fas fa-heart" aria-hidden="true"></i>
                     <span class="cart-badge" id="wishlistBadge" style="display:none;">0</span>
-                    <span class="utility-text">Wishlist</span>
+                    <span class="utility-text">উইশলিস্ট</span>
                 </a>
                 <a href="javascript:void(0)" class="utility-link cart-link" id="cartButton" aria-label="Shopping Cart, 0 items">
                     <div class="cart-icon-wrapper">
                         <i class="fas fa-shopping-basket" aria-hidden="true"></i>
                         <span class="cart-badge" id="cartBadge" aria-live="polite">0</span>
                     </div>
-                    <span class="utility-text">Basket</span>
+                    <span class="utility-text">বাস্কেট</span>
                 </a>
             </div>
         </div>
@@ -72,12 +76,12 @@
     <nav class="main-nav" id="mainNav" aria-label="Primary Navigation">
         <div class="container navigation-container">
             <ul class="nav-links">
-                <li><a href="#" class="nav-item active" data-category="all">All Products</a></li>
-                <li><a href="#" class="nav-item" data-category="condoms">Condoms</a></li>
-                <li><a href="#" class="nav-item" data-category="lubricants">Lubricants & Gels</a></li>
-                <li><a href="#" class="nav-item" data-category="contraceptive">Contraceptive & Test Kits</a></li>
-                <li><a href="#" class="nav-item" data-category="delay">Delay Sprays</a></li>
-                <li><a href="#" class="nav-item" data-category="pills">Pills</a></li>
+                <li><a href="#" class="nav-item active" data-category="all">সব প্রোডাক্ট</a></li>
+                <li><a href="#" class="nav-item" data-category="condoms">কনডম</a></li>
+                <li><a href="#" class="nav-item" data-category="lubricants">লুব্রিকেন্ট ও জেল</a></li>
+                <li><a href="#" class="nav-item" data-category="contraceptive">গর্ভনিরোধক ও টেস্ট কিট</a></li>
+                <li><a href="#" class="nav-item" data-category="delay">ডিলে স্প্রে</a></li>
+                <li><a href="#" class="nav-item" data-category="pills">পিলস</a></li>
             </ul>
         </div>
     </nav>
@@ -87,20 +91,23 @@
         
         <!-- Reassuring Hero Banner Section -->
         <section class="hero-section" aria-labelledby="hero-title">
+            <div class="hero-bg-marquee" aria-hidden="true">
+                <div class="marquee-track marquee-track--left" id="heroMarqueeLeft"></div>
+                <div class="marquee-track marquee-track--right" id="heroMarqueeRight"></div>
+            </div>
             <div class="container hero-container">
                 <div class="hero-content">
-                    <span class="hero-tagline">Premium Health & Wellness Logistics</span>
-                    <h1 id="hero-title">Discreet, Fast, & Secure Delivery across Chattogram</h1>
-                    <p>Access trusted wellness Essentials without compromising your personal space. Orders are delivered in completely unbranded boxes with total privacy guaranteed.</p>
+                    <span class="hero-tagline">প্রিমিয়াম হেলথ ও ওয়েলনেস</span>
+                    <h1 id="hero-title">চট্টগ্রামে সিকিউর ও দ্রুত ডেলিভারি</h1>
+                    <p>আপনার ব্যক্তিগত প্রাইভেসি রক্ষা করে পান বিশ্বস্ত ওয়েলনেস প্রোডাক্ট। সম্পূর্ণ আনব্র্যান্ডেড বক্সে ডেলিভারি — গোপনীয়তা ১০০% নিশ্চিত।</p>
                     <div class="hero-cta-group">
-                        <a href="#products-showcase" class="btn btn-primary">Shop Confidential</a>
-                        <a href="#privacy-guarantee" class="btn btn-secondary">Our Privacy Promise</a>
+                        <a href="#products-showcase" class="btn btn-primary">এখনই কিনুন</a>
+                        <a href="#privacy-guarantee" class="btn btn-secondary">প্রাইভেসি প্রমিস</a>
                     </div>
                 </div>
                 <div class="hero-visual">
                     <!-- Standard modern graphic placeholder using architectural CSS layouts -->
                     <div class="secure-box-graphic">
-                        <i class="fas fa-box-open box-icon"></i>
                         <span class="badge-verified"><i class="fas fa-check-circle"></i> 100% Genuine</span>
                     </div>
                 </div>
@@ -112,18 +119,18 @@
             <div class="container props-grid">
                 <div class="prop-card">
                     <div class="prop-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
-                    <h3>100% Private Packaging</h3>
-                    <p>No product names, store logos, or indicators listed on the outside wrapper.</p>
+                    <h3>১০০% প্রাইভেট প্যাকেজিং</h3>
+                    <p>বাইরে কোনো প্রোডাক্টের নাম বা লোগো থাকবে না। সম্পূর্ণ গোপনীয়।</p>
                 </div>
                 <div class="prop-card">
                     <div class="prop-icon"><i class="fas fa-shipping-fast" aria-hidden="true"></i></div>
-                    <h3>Express Chattogram Shipping</h3>
-                    <p>Rapid dispatch locally within Chattogram municipal zones directly to your doorstep.</p>
+                    <h3>এক্সপ্রেস চট্টগ্রাম শিপিং</h3>
+                    <p>চট্টগ্রামের সকল এলাকায় দ্রুত ডেলিভারি — আপনার দরজায়।</p>
                 </div>
                 <div class="prop-card">
                     <div class="prop-icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
-                    <h3>Secure & Discreet Checkout</h3>
-                    <p>Encrypted transaction platforms with highly confidential records management.</p>
+                    <h3>সিকিউর ও ডিসক্রিট চেকআউট</h3>
+                    <p>এনক্রিপ্টেড পেমেন্ট — আপনার তথ্য সম্পূর্ণ নিরাপদ।</p>
                 </div>
             </div>
         </section>
@@ -131,27 +138,27 @@
         <!-- Modular Category Navigation Grid -->
         <section class="categories-section" aria-labelledby="categories-title">
             <div class="container">
-                <h2 id="categories-title" class="section-title">Shop by Specialized Category</h2>
+                <h2 id="categories-title" class="section-title">ক্যাটাগরি অনুযায়ী কিনুন</h2>
                 <div class="categories-grid">
                     <button class="category-card" data-category="condoms" aria-label="View Condoms Category">
                         <i class="fas fa-layer-group" aria-hidden="true"></i>
-                        <span>Condoms</span>
+                        <span>কনডম</span>
                     </button>
                     <button class="category-card" data-category="lubricants" aria-label="View Lubricants & Gels Category">
                         <i class="fas fa-water" aria-hidden="true"></i>
-                        <span>Lubricants & Gels</span>
+                        <span>লুব্রিকেন্ট ও জেল</span>
                     </button>
                     <button class="category-card" data-category="contraceptive" aria-label="View Contraceptive & Test Kits Category">
                         <i class="fas fa-vial" aria-hidden="true"></i>
-                        <span>Contraceptive & Test Kits</span>
+                        <span>গর্ভনিরোধক ও টেস্ট কিট</span>
                     </button>
                     <button class="category-card" data-category="delay" aria-label="View Delay Sprays Category">
                         <i class="fas fa-spray-can" aria-hidden="true"></i>
-                        <span>Delay Sprays</span>
+                        <span>ডিলে স্প্রে</span>
                     </button>
                     <button class="category-card" data-category="pills" aria-label="View Pills Category">
                         <i class="fas fa-pills" aria-hidden="true"></i>
-                        <span>Pills</span>
+                        <span>পিলস</span>
                     </button>
                 </div>
             </div>
@@ -161,7 +168,7 @@
         <section class="products-section" id="products-showcase" aria-labelledby="products-title">
             <div class="container">
                 <div class="products-header">
-                    <h2 id="products-title" class="section-title">Featured Wellness Essentials</h2>
+                    <h2 id="products-title" class="section-title">জনপ্রিয় ওয়েলনেস প্রোডাক্ট</h2>
                     <p class="results-count" id="resultsCount">Showing all curated items</p>
                 </div>
                 
@@ -179,41 +186,41 @@
             <div class="footer-info">
                 <span class="footer-logo"><span class="logo-accent">Condo</span>mart</span>
                 <p class="footer-description">
-                    Condomart is Chattogram's premier localized sexual health platform, providing private accessibility to international and verified domestic wellness brands.
+                    কনডোমার্ট চট্টগ্রামের সবচেয়ে বিশ্বস্ত সেক্সুয়াল হেলথ প্ল্যাটফর্ম — আন্তর্জাতিক ও দেশি ব্র্যান্ডের প্রোডাক্ট পাবেন সম্পূর্ণ প্রাইভেটলি।
                 </p>
-                <p class="footer-location"><i class="fas fa-map-marker-alt"></i> Serving Hub: GEC Circle / Agrabad, Chattogram, Bangladesh.</p>
+                <p class="footer-location"><i class="fas fa-map-marker-alt"></i> সার্ভিসিং হাব: জিইসি সার্কেল / আগ্রাবাদ, চট্টগ্রাম</p>
             </div>
             
             <div class="footer-links">
-                <h3>Customer Support</h3>
+                <h3>কাস্টমার সাপোর্ট</h3>
                 <ul>
-                    <li><a href="#">Help & FAQs</a></li>
-                    <li><a href="#">Discreet Shipping Guide</a></li>
-                    <li><a href="#">Return & Refund Architecture</a></li>
-                    <li><a href="#">Contact Support Desk</a></li>
+                    <li><a href="#">হেল্প ও সাধারণ জিজ্ঞাসা</a></li>
+                    <li><a href="#">ডিসক্রিট শিপিং গাইড</a></li>
+                    <li><a href="#">রিটার্ন ও রিফান্ড</a></li>
+                    <li><a href="#">সাপোর্টে যোগাযোগ করুন</a></li>
                 </ul>
             </div>
 
             <div class="footer-faq" id="faq-section">
-                <h3>Frequently Asked Questions</h3>
+                <h3>সাধারণ জিজ্ঞাসা (FAQ)</h3>
                 <div class="faq-item">
-                    <h4>How does delivery privacy operate?</h4>
-                    <p>All items are placed inside standard padded mailer bags or brown generic boxes. Courier labels indicate 'Healthcare Essentials', keeping the itemized breakdown confidential.</p>
+                    <h4>ডেলিভারি কীভাবে গোপনীয় থাকে?</h4>
+                    <p>সব প্রোডাক্ট রাখা হয় সাধারণ প্যাডেড ব্যাগ বা ব্রাউন বক্সে। কুরিয়ার লেবেলে থাকে 'হেলথকেয়ার এসেনশিয়ালস' — কোনো প্রোডাক্টের নাম থাকে না।</p>
                 </div>
                 <div class="faq-item">
-                    <h4>What is the delivery window within Chattogram?</h4>
-                    <p>Standard priority deliveries within central zones are completed quickly to match rapid local routing standards.</p>
+                    <h4>চট্টগ্রামে ডেলিভারি কত দ্রুত?</h4>
+                    <p>সিটি এরিয়ায় এক্সপ্রেস ডেলিভারি দ্রুত সম্পন্ন হয় — সাধারণত একই দিন বা পরের দিন।</p>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <div class="container footer-bottom-container">
-                <p>&copy; 2026 Condomart Bangladesh. All rights reserved safely.</p>
+                <p>&copy; ২০২৬ কনডোমার্ট বাংলাদেশ। সর্বস্বত্ব সংরক্ষিত।</p>
                 <div class="payment-badges" aria-label="Accepted Payments">
-                    <i class="fab fa-cc-visa" title="Visa Payment Integration Ready"></i>
-                    <i class="fab fa-cc-mastercard" title="Mastercard Accepted"></i>
-                    <span class="cod-badge">Cash on Delivery Available</span>
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <span class="cod-badge">ক্যাশ অন ডেলিভারি পাওয়া যায়</span>
                 </div>
             </div>
         </div>
@@ -223,25 +230,25 @@
     <div class="modal-overlay" id="accountModal">
         <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle">
             <button class="modal-close" id="accountModalClose" aria-label="Close"><i class="fas fa-times"></i></button>
-            <h2 id="accountModalTitle">Welcome to Condomart</h2>
-            <p class="modal-sub">Your details stay 100% private & discreet.</p>
+            <h2 id="accountModalTitle">কনডোমার্টে স্বাগতম</h2>
+            <p class="modal-sub">আপনার তথ্য ১০০% নিরাপদ ও প্রাইভেট।</p>
 
             <form id="accountForm">
-                <label for="accName">Full Name</label>
-                <input type="text" id="accName" required placeholder="Your name">
+                <label for="accName">পুরো নাম</label>
+                <input type="text" id="accName" required placeholder="আপনার নাম">
 
-                <label for="accEmail">Email</label>
+                <label for="accEmail">ইমেইল</label>
                 <input type="email" id="accEmail" required placeholder="you@example.com">
 
-                <label for="accPass">Password</label>
-                <input type="password" id="accPass" required placeholder="Create a password" minlength="4">
+                <label for="accPass">পাসওয়ার্ড</label>
+                <input type="password" id="accPass" required placeholder="পাসওয়ার্ড তৈরি করুন" minlength="4">
 
-                <button type="submit" class="btn btn-primary modal-submit" id="accountSubmit">Create Account</button>
+                <button type="submit" class="btn btn-primary modal-submit" id="accountSubmit">অ্যাকাউন্ট তৈরি করুন</button>
             </form>
 
             <p class="modal-toggle">
-                <span id="accountToggleText">Already have an account?</span>
-                <a href="javascript:void(0)" id="accountToggle">Login</a>
+                <span id="accountToggleText">ইতিমধ্যে অ্যাকাউন্ট আছে?</span>
+                <a href="javascript:void(0)" id="accountToggle">লগইন করুন</a>
             </p>
 
             <div class="admin-hint">
@@ -254,7 +261,7 @@
     <div class="cart-overlay" id="cartOverlay"></div>
     <aside class="cart-panel" id="cartPanel" aria-label="Shopping Cart" aria-hidden="true">
         <div class="cart-panel-header">
-            <h2>Your Basket</h2>
+            <h2>আপনার বাস্কেট</h2>
             <button class="cart-close" id="cartClose" aria-label="Close Cart"><i class="fas fa-times"></i></button>
         </div>
         <div class="cart-panel-body" id="cartPanelBody">
@@ -262,10 +269,10 @@
         </div>
         <div class="cart-panel-footer">
             <div class="cart-total-row">
-                <span>Total</span>
+                <span>মোট</span>
                 <strong id="cartTotal">৳ 0</strong>
             </div>
-            <button class="btn btn-primary cart-checkout" id="cartCheckout">Place Order</button>
+            <button class="btn btn-primary cart-checkout" id="cartCheckout">অর্ডার করুন</button>
         </div>
     </aside>
 
@@ -273,7 +280,7 @@
     <div class="cart-overlay" id="wishlistOverlay"></div>
     <aside class="cart-panel" id="wishlistPanel" aria-label="Wishlist" aria-hidden="true">
         <div class="cart-panel-header">
-            <h2>Your Wishlist</h2>
+            <h2>আপনার উইশলিস্ট</h2>
             <button class="cart-close" id="wishlistClose" aria-label="Close Wishlist"><i class="fas fa-times"></i></button>
         </div>
         <div class="cart-panel-body" id="wishlistPanelBody"></div>
@@ -293,7 +300,7 @@
                         <span id="qvStock"></span>
                     </div>
                     <p class="quickview-desc" id="qvDesc"></p>
-                    <button class="btn btn-primary" id="qvAdd">Add to Cart</button>
+                    <button class="btn btn-primary" id="qvAdd">কার্টে যোগ করুন</button>
                 </div>
             </div>
         </div>
@@ -303,18 +310,18 @@
     <div class="modal-overlay" id="checkoutModal">
         <div class="modal-box checkout-box" role="dialog" aria-modal="true">
             <button class="modal-close" id="checkoutClose" aria-label="Close"><i class="fas fa-times"></i></button>
-            <h2>Checkout</h2>
-            <p class="modal-sub">Cash on Delivery · 100% Discreet Packaging</p>
+            <h2>চেকআউট</h2>
+            <p class="modal-sub">ক্যাশ অন ডেলিভারি · ১০০% ডিসক্রিট প্যাকেজিং</p>
             <div id="checkoutItems" class="checkout-items"></div>
             <div class="checkout-totals">
-                <div class="co-row"><span>Subtotal</span><span id="checkoutSubtotal">৳ 0</span></div>
-                <div class="co-row"><span>Delivery (<em id="coArea"></em>)</span><span id="checkoutFee">৳ 0</span></div>
-                <div class="co-row co-total"><span>Total</span><span id="checkoutTotal">৳ 0</span></div>
+                <div class="co-row"><span>সাবটোটাল</span><span id="checkoutSubtotal">৳ 0</span></div>
+                <div class="co-row"><span>ডেলিভারি (<em id="coArea"></em>)</span><span id="checkoutFee">৳ 0</span></div>
+                <div class="co-row co-total"><span>মোট</span><span id="checkoutTotal">৳ 0</span></div>
             </div>
 
             <!-- Delivery Location Selector (shown at order confirm time) -->
             <div class="checkout-location">
-                <label>Delivery Area</label>
+                <label>ডেলিভারি এলাকা</label>
                 <div class="location-selector checkout-loc">
                     <button type="button" class="location-btn" id="checkoutLocBtn">
                         <i class="fas fa-map-marker-alt"></i> <strong class="loc-name">GEC Circle</strong>
@@ -324,7 +331,7 @@
                     <div class="location-menu" id="checkoutLocationMenu">
                         <div class="location-search">
                             <i class="fas fa-search"></i>
-                            <input type="text" id="checkoutLocationSearch" placeholder="Search your area...">
+                            <input type="text" id="checkoutLocationSearch" placeholder="আপনার এলাকা সার্চ করুন...">
                         </div>
                         <div class="location-list" id="checkoutLocationList"></div>
                     </div>
@@ -332,26 +339,26 @@
             </div>
 
             <form id="checkoutForm">
-                <label for="coName">Full Name</label>
-                <input type="text" id="coName" required placeholder="Your name">
-                <label for="coPhone">Phone</label>
+                <label for="coName">পুরো নাম</label>
+                <input type="text" id="coName" required placeholder="আপনার নাম">
+                <label for="coPhone">ফোন</label>
                 <input type="tel" id="coPhone" required placeholder="01XXXXXXXXX">
-                <label for="coAddress">Delivery Address</label>
-                <textarea id="coAddress" required rows="2" placeholder="House, road, area"></textarea>
-                <button type="submit" class="btn btn-primary modal-submit">Place COD Order</button>
+                <label for="coAddress">ডেলিভারি ঠিকানা</label>
+                <textarea id="coAddress" required rows="2" placeholder="বাসা, রোড, এলাকা"></textarea>
+                <button type="submit" class="btn btn-primary modal-submit">অর্ডার কনফার্ম করুন</button>
             </form>
         </div>
     </div>
 
     <!-- Mobile Bottom Navigation -->
     <nav class="mobile-bottom-nav">
-        <a href="javascript:void(0)" id="mbnHome"><i class="fas fa-home"></i><span>Home</span></a>
-        <a href="javascript:void(0)" id="mbnWish"><i class="fas fa-heart"></i><span>Wishlist</span></a>
-        <a href="javascript:void(0)" id="mbnCart"><i class="fas fa-shopping-basket"></i><span>Basket</span></a>
-        <a href="javascript:void(0)" id="mbnAcc"><i class="fas fa-user-circle"></i><span>Account</span></a>
+        <a href="javascript:void(0)" id="mbnHome"><i class="fas fa-home"></i><span>হোম</span></a>
+        <a href="javascript:void(0)" id="mbnWish"><i class="fas fa-heart"></i><span>উইশলিস্ট</span></a>
+        <a href="javascript:void(0)" id="mbnCart"><i class="fas fa-shopping-basket"></i><span>বাস্কেট</span></a>
+        <a href="javascript:void(0)" id="mbnAcc"><i class="fas fa-user-circle"></i><span>অ্যাকাউন্ট</span></a>
     </nav>
 
     <!-- App Engine Execution Layer -->
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 </html>
