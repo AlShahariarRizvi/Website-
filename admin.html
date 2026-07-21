@@ -851,6 +851,7 @@
             showLogin();
         }
         window.addEventListener("storage", renderAdmin);
+        setInterval(() => { if (localStorage.getItem(ADMIN_SESSION_KEY) === "1") renderAdmin(); }, 5000);
     </script>
 </body>
 </html>

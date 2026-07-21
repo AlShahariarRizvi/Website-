@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Condomart - Application Frontend Execution Layer
  * Architectural Target: Vanilla Modular Reactive Functions
  */
@@ -2007,6 +2007,22 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCart();
     renderWishlistBadge();
     initHeroMarquee();
+
+    var privacyBtn = document.getElementById("privacyPromiseBtn");
+    var privacyModal = document.getElementById("privacyModal");
+    if (privacyBtn && privacyModal) {
+        privacyBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            privacyModal.classList.add("open");
+        });
+        var privacyCloseBtn = document.getElementById("privacyCloseBtn");
+        if (privacyCloseBtn) privacyCloseBtn.addEventListener("click", function() { privacyModal.classList.remove("open"); });
+        var privacyCloseX = privacyModal.querySelector(".modal-close");
+        if (privacyCloseX) privacyCloseX.addEventListener("click", function() { privacyModal.classList.remove("open"); });
+        privacyModal.addEventListener("click", function(e) {
+            if (e.target === privacyModal) privacyModal.classList.remove("open");
+        });
+    }
 });
 
 function initHeroMarquee() {
@@ -2074,11 +2090,11 @@ function initCatalogView(products) {
                 <p>কোনো ম্যাচিং প্রোডাক্ট পাওয়া যায়নি। আবার সার্চ করে দেখুন।</p>
             </div>
         `;
-        counterLabel.textContent = "0 product পাওয়া যায়নি";
+        if (counterLabel) counterLabel.textContent = "0 product পাওয়া যায়নি";
         return;
     }
 
-    counterLabel.textContent = `${products.length} টি প্রোডাক্ট পাওয়া গেছে`;
+    if (counterLabel) counterLabel.textContent = `${products.length} টি প্রোডাক্ট পাওয়া গেছে`;
 
     // Process collection structural mapping array loops
     products.forEach(product => {
@@ -2127,23 +2143,127 @@ function getStockBadge(stock) {
 /**
  * Active Client-side Simulated Search Architecture Engine
  */
+const BN_SEARCH_MAP = {
+    "কনডম": ["condoms", "condom"],
+    "কনডমের": ["condoms", "condom"],
+    "লুব্রিকেন্ট": ["lubricants", "lube", "lubricant", "jelly", "gel"],
+    "জেল": ["lubricants", "lube", "lubricant", "jelly", "gel"],
+    "গর্ভনিরোধক": ["contraceptive", "pregnancy", "test"],
+    "টেস্ট কিট": ["contraceptive", "pregnancy", "test", "kit"],
+    "ডিলে স্প্রে": ["delay", "spray"],
+    "ডিলে": ["delay", "extra time", "long lasting", "longlast"],
+    "পিলস": ["pills", "pill"],
+    "থিন": ["thin", "ultra thin", "extra thin", "invisible"],
+    "পাতলা": ["thin", "ultra thin", "extra thin", "invisible"],
+    "সুপার থিন": ["super thin", "ultra thin", "thin"],
+    "ডটেড": ["dotted", "dots"],
+    "রিবড": ["ribbed", "rib"],
+    "ফ্লেভার": ["flavour", "flavored", "flavoured", "flavor"],
+    "স্ট্রবেরি": ["strawberry"],
+    "চকলেট": ["chocolate", "choco"],
+    "বানানা": ["banana"],
+    "ভ্যানিলা": ["vanilla"],
+    "পুদিনা": ["mint"],
+    "কম্বো": ["combo", "assorted", "mix", "3in1"],
+    "প্রিমিয়াম": ["premium"],
+    "বেশি সময়": ["extra time", "long lasting", "longlast", "delay"],
+    "লং লাস্টিং": ["long lasting", "longlast", "extra time"],
+    "এক্সট্রা টাইম": ["extra time", "long lasting"],
+    "সুপার ডটেড": ["super dotted", "dots", "dotted"],
+    "গ্লো": ["glow", "dark"],
+    "ইনভিজিবল": ["invisible", "ultra thin"],
+    "রিয়াল ফিল": ["real feel", "skin on skin"],
+    "দেরেক্স": ["durex"],
+    "ডুরেক্স": ["durex"],
+    "স্কোর": ["skore"],
+    "করাল": ["coral"],
+    "ক্যারেক্স": ["carex"],
+    "ম্যানফোর্স": ["manforce"],
+    "কামাসুত্র": ["kamasutra"],
+    "মুডস": ["moods"],
+    "টাইগার": ["tiger"],
+    "এক্সএস": ["exs"],
+    "এক্সট্রিম": ["xtreme"],
+    "সেলিব্রিটি": ["celebrity"],
+    "প্যান্থার": ["panther"],
+    "হিরো": ["hero"],
+    "ওলো": ["olo"],
+    "ইয়মি": ["yommee"],
+    "কুপিড": ["cupid"],
+    "ফান টাইম": ["fun time"],
+    "সেনসেশন": ["sensation"],
+    "স্কিনস": ["skins"],
+    "সেক্সুয়াল": ["sexual", "wellness", "health"],
+    "হেলথ": ["health", "wellness"],
+    "ওয়েলনেস": ["wellness", "health"],
+    "প্রেগনেন্সি": ["pregnancy", "test", "hcg"],
+    "স্প্রে": ["spray", "delay", "procomil"],
+    "প্রোকমিল": ["procomil", "delay", "spray"],
+    "প্রোডাক্ট": [],
+    "প্যাক": ["pack", "pcs", "s pack", "pcs pack"],
+    "পিস": ["pcs", "pack"],
+    "সিঙ্গেল": ["single", "3x1"],
+    "টেস্ট": ["test", "kit", "pregnancy"]
+};
+
+function expandSearchQuery(query) {
+    const terms = [query];
+    Object.keys(BN_SEARCH_MAP).forEach(bn => {
+        if (query.includes(bn)) {
+            BN_SEARCH_MAP[bn].forEach(en => terms.push(en));
+        }
+    });
+    return terms;
+}
+
+function performSearch(query) {
+    var q = (query || "").toLowerCase().trim();
+    if (!q) {
+        resetNavActiveState();
+        initCatalogView(PRODUCT_CATALOGUE);
+        return;
+    }
+
+    var extraTerms = [];
+    Object.keys(BN_SEARCH_MAP).forEach(function(bn) {
+        if (q.indexOf(bn) !== -1) {
+            extraTerms = extraTerms.concat(BN_SEARCH_MAP[bn]);
+        }
+    });
+
+    var filtered = PRODUCT_CATALOGUE.filter(function(product) {
+        var t = (product.title || "").toLowerCase();
+        var b = (product.brand || "").toLowerCase();
+        var c = (product.category || "").toLowerCase();
+        if (t.indexOf(q) !== -1 || b.indexOf(q) !== -1 || c.indexOf(q) !== -1) return true;
+        for (var i = 0; i < extraTerms.length; i++) {
+            var et = extraTerms[i].toLowerCase();
+            if (et && (t.indexOf(et) !== -1 || b.indexOf(et) !== -1 || c.indexOf(et) !== -1)) return true;
+        }
+        return false;
+    });
+
+    resetNavActiveState();
+    initCatalogView(filtered);
+    document.getElementById("products-showcase").scrollIntoView({ behavior: "smooth" });
+}
+
 function initInteractiveSearch() {
     const input = document.getElementById("searchInput");
+    const form = document.getElementById("searchForm");
     if (!input) return;
 
-    input.addEventListener("input", (e) => {
-        const query = e.target.value.toLowerCase().trim();
-        
-        const filtered = PRODUCT_CATALOGUE.filter(product => {
-            return product.title.toLowerCase().includes(query) || 
-                   product.brand.toLowerCase().includes(query) ||
-                   product.category.toLowerCase().includes(query);
-        });
-
-        // Synchronize Active Filters View
-        resetNavActiveState();
-        initCatalogView(filtered);
+    input.addEventListener("input", function() {
+        performSearch(this.value);
     });
+
+    if (form) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            performSearch(input.value);
+            input.blur();
+        });
+    }
 }
 
 /**

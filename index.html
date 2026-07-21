@@ -13,7 +13,7 @@
     <!-- FontAwesome for accessible vector iconography -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Core UI stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 
@@ -38,12 +38,12 @@
 
             <a href="#" class="logo" aria-label="Condomart Home">
                 <img class="logo-img" src="images/NEW protfolio.png" alt="Condomart">
-                <span class="logo-accent">Condo</span>mart
+                <span class="logo-accent">কনডো</span>MART
             </a>
 
             <!-- High Visibility Search bar -->
             <div class="search-container">
-                <form class="search-form" id="searchForm" role="search" onsubmit="event.preventDefault();">
+                <form class="search-form" id="searchForm" role="search">
                     <label for="searchInput" class="visually-hidden">Search sexual wellness products</label>
                     <input type="search" id="searchInput" placeholder="সার্চ করুন প্রোডাক্ট, ব্র্যান্ড..." aria-label="Search through site products">
                     <button type="submit" aria-label="Submit Search"><i class="fas fa-search" aria-hidden="true"></i></button>
@@ -102,7 +102,7 @@
                     <p>আপনার ব্যক্তিগত প্রাইভেসি রক্ষা করে পান বিশ্বস্ত ওয়েলনেস প্রোডাক্ট। সম্পূর্ণ আনব্র্যান্ডেড বক্সে ডেলিভারি — গোপনীয়তা ১০০% নিশ্চিত।</p>
                     <div class="hero-cta-group">
                         <a href="#products-showcase" class="btn btn-primary">এখনই কিনুন</a>
-                        <a href="#privacy-guarantee" class="btn btn-secondary">প্রাইভেসি প্রমিস</a>
+                        <a href="javascript:void(0)" class="btn btn-secondary" id="privacyPromiseBtn">প্রাইভেসি প্রমিস</a>
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -184,7 +184,7 @@
     <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-info">
-                <span class="footer-logo"><span class="logo-accent">Condo</span>mart</span>
+                <span class="footer-logo"><span class="logo-accent">কনডো</span>MART</span>
                 <p class="footer-description">
                     কনডোমার্ট চট্টগ্রামের সবচেয়ে বিশ্বস্ত সেক্সুয়াল হেলথ প্ল্যাটফর্ম — আন্তর্জাতিক ও দেশি ব্র্যান্ডের প্রোডাক্ট পাবেন সম্পূর্ণ প্রাইভেটলি।
                 </p>
@@ -254,6 +254,19 @@
             <div class="admin-hint">
                 <a href="admin.html">Store Admin? Access panel →</a>
             </div>
+        </div>
+    </div>
+
+    <!-- Privacy Promise Modal -->
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal-box" style="max-width:480px;text-align:center;">
+            <button class="modal-close" aria-label="Close"><i class="fas fa-times"></i></button>
+            <div style="font-size:2.5rem;color:var(--color-secondary);margin-bottom:12px;"><i class="fas fa-shield-alt"></i></div>
+            <h2>প্রাইভেসি প্রমিস</h2>
+            <p style="color:var(--color-text-main);line-height:1.7;font-size:0.95rem;margin-top:14px;">
+                আপনার প্রতিটি অর্ডার ও ব্যক্তিগত তথ্য সম্পূর্ণ গোপন রাখা হয়। নিরাপদ পেমেন্ট, সুরক্ষিত ডেটা সংরক্ষণ এবং ডিসক্রিট প্যাকেজিংয়ের মাধ্যমে আমরা আপনার ব্যক্তিগত গোপনীয়তা নিশ্চিত করি।
+            </p>
+            <button class="btn btn-primary" style="width:100%;margin-top:20px;" id="privacyCloseBtn">বুঝেছি</button>
         </div>
     </div>
 
@@ -359,6 +372,6 @@
     </nav>
 
     <!-- App Engine Execution Layer -->
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=5"></script>
 </body>
 </html>
