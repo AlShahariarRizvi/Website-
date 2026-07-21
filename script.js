@@ -1919,6 +1919,29 @@ const PRODUCTS_VERSION_KEY = "condomart_products_version";
 const PRODUCTS_VERSION = "3"; // bump when default catalogue / images change
 const VALID_CATEGORIES = ["condoms", "lubricants", "contraceptive", "delay", "pills"];
 
+// Combo offer persistence
+const COMBO_STORAGE_KEY = "condomart_combo";
+const DEFAULT_COMBO = {
+    title: "Durex Flavour Combo 12s + Extra Thin 3s",
+    image: "images/condoms/Durex-Flavours-Condom-Strawberry-Banana-Orange-Apple-Combo---12s-Pack.avif",
+    originalPrice: 1200,
+    comboPrice: 899,
+    items: ["Durex Flavours 12s", "Durex Extra Thin 3s"],
+    active: true
+};
+
+function loadCombo() {
+    try {
+        var c = JSON.parse(localStorage.getItem(COMBO_STORAGE_KEY));
+        if (c && c.title) return c;
+    } catch (e) {}
+    return Object.assign({}, DEFAULT_COMBO);
+}
+
+function saveCombo(combo) {
+    localStorage.setItem(COMBO_STORAGE_KEY, JSON.stringify(combo));
+}
+
 function loadProducts() {
     try {
         // Ignore outdated cached catalogue so catalogue/image updates are picked up
@@ -2023,6 +2046,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.target === privacyModal) privacyModal.classList.remove("open");
         });
     }
+
+    renderComboOffer();
 });
 
 function initHeroMarquee() {
@@ -2036,6 +2061,51 @@ function initHeroMarquee() {
     }
     leftTrack.innerHTML  = buildRow(allImages) + buildRow(allImages);
     rightTrack.innerHTML = buildRow([...allImages].reverse()) + buildRow([...allImages].reverse());
+}
+
+function renderComboOffer() {
+    var card = document.getElementById("comboOfferCard");
+    if (!card) return;
+    var combo = loadCombo();
+    if (!combo.active) { card.style.display = "none"; return; }
+
+    var imgEl = document.getElementById("comboProductImg");
+    var titleEl = document.getElementById("comboTitle");
+    var oldPriceEl = document.getElementById("comboOldPrice");
+    var newPriceEl = document.getElementById("comboNewPrice");
+    var savingsEl = document.getElementById("comboSavings");
+    var addBtn = document.getElementById("comboAddBtn");
+
+    if (imgEl) imgEl.innerHTML = '<img src="' + combo.image + '" alt="' + combo.title + '" style="width:100px;height:100px;object-fit:contain;">';
+    if (titleEl) titleEl.textContent = combo.title;
+    if (oldPriceEl) oldPriceEl.textContent = "৳ " + combo.originalPrice;
+    if (newPriceEl) newPriceEl.textContent = "৳ " + combo.comboPrice;
+    var savings = combo.originalPrice - combo.comboPrice;
+    if (savingsEl) savingsEl.textContent = savings > 0 ? "সেভ করুন ৳ " + savings : "";
+    if (addBtn) {
+        addBtn.onclick = function() {
+            if (combo.comboPrice <= 0) { showToast("কম্বো প্রাইস সেট করুন"); return; }
+            var comboProduct = {
+                id: "combo-" + Date.now(),
+                title: combo.title,
+                brand: "Combo",
+                category: "condoms",
+                price: combo.comboPrice,
+                image: combo.image,
+                stock: 999
+            };
+            var existing = cartState.items["combo-offer"];
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cartState.items["combo-offer"] = { product: comboProduct, qty: 1 };
+            }
+            renderCart();
+            showToast("কম্বো কার্টে যোগ হয়েছে!");
+            document.getElementById("cartPanel").classList.add("open");
+            document.getElementById("cartOverlay").classList.add("open");
+        };
+    }
 }
 
 /**

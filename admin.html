@@ -254,6 +254,44 @@
         </div>
 
         <div class="admin-section">
+            <h2><i class="fas fa-tags" style="margin-right:8px;"></i> Combo Offer Setup</h2>
+            <p style="font-size:0.82rem;color:var(--color-text-muted);margin-bottom:14px;">Homepage hero section e combo offer card dekhanor jonno price setup koren.</p>
+            <form id="comboForm" class="admin-form-grid">
+                <div class="full">
+                    <label for="comboTitleInput">Combo Title</label>
+                    <input type="text" id="comboTitleInput" placeholder="e.g. Durex Flavour Combo 12s + Extra Thin 3s">
+                </div>
+                <div>
+                    <label for="comboOrigPrice">Original Price (৳)</label>
+                    <input type="number" id="comboOrigPrice" min="0" placeholder="1200">
+                </div>
+                <div>
+                    <label for="comboSalePrice">Combo Price (৳)</label>
+                    <input type="number" id="comboSalePrice" min="0" placeholder="899">
+                </div>
+                <div>
+                    <label for="comboItemsInput">Included Items (comma-separated)</label>
+                    <input type="text" id="comboItemsInput" placeholder="e.g. Durex Flavours 12s, Durex Extra Thin 3s">
+                </div>
+                <div>
+                    <label for="comboImageInput">Product Image Path</label>
+                    <input type="text" id="comboImageInput" placeholder="images/condoms/...">
+                </div>
+                <div>
+                    <label for="comboActive">Status</label>
+                    <select id="comboActive">
+                        <option value="true">Active (show on homepage)</option>
+                        <option value="false">Inactive (hide)</option>
+                    </select>
+                </div>
+                <div class="full" style="display:flex;gap:10px;">
+                    <button type="submit" class="btn btn-primary">Save Combo Offer</button>
+                    <span id="comboSaveMsg" style="color:#16a34a;font-size:0.85rem;font-weight:600;align-self:center;"></span>
+                </div>
+            </form>
+        </div>
+
+        <div class="admin-section">
             <h2><i class="fas fa-receipt" style="margin-right:8px;"></i> Orders</h2>
             <button class="btn btn-secondary admin-clear" id="adminClear">Clear All Orders</button>
             <div id="adminOrders"></div>
@@ -263,6 +301,7 @@
     <script>
         const ORDERS_STORAGE_KEY = "condomart_orders";
         const PRODUCTS_STORAGE_KEY = "condomart_products";
+        const COMBO_STORAGE_KEY = "condomart_combo";
         const ADMIN_SESSION_KEY = "condomart_admin_session";
         const ADMIN_USER = "admin";
         const ADMIN_PASS = "admin123";
@@ -278,6 +317,37 @@
             catch (e) { return []; }
         }
         function saveProducts(products) { localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products)); }
+
+        function loadCombo() {
+            try { return JSON.parse(localStorage.getItem(COMBO_STORAGE_KEY)) || null; } catch (e) { return null; }
+        }
+        function saveCombo(c) { localStorage.setItem(COMBO_STORAGE_KEY, JSON.stringify(c)); }
+        function populateComboForm() {
+            var c = loadCombo();
+            if (!c) return;
+            document.getElementById("comboTitleInput").value = c.title || "";
+            document.getElementById("comboOrigPrice").value = c.originalPrice || 0;
+            document.getElementById("comboSalePrice").value = c.comboPrice || 0;
+            document.getElementById("comboItemsInput").value = (c.items || []).join(", ");
+            document.getElementById("comboImageInput").value = c.image || "";
+            document.getElementById("comboActive").value = c.active ? "true" : "false";
+        }
+        populateComboForm();
+        document.getElementById("comboForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            var combo = {
+                title: document.getElementById("comboTitleInput").value.trim(),
+                originalPrice: Number(document.getElementById("comboOrigPrice").value) || 0,
+                comboPrice: Number(document.getElementById("comboSalePrice").value) || 0,
+                items: document.getElementById("comboItemsInput").value.split(",").map(function(s){ return s.trim(); }).filter(Boolean),
+                image: document.getElementById("comboImageInput").value.trim(),
+                active: document.getElementById("comboActive").value === "true"
+            };
+            saveCombo(combo);
+            var msg = document.getElementById("comboSaveMsg");
+            msg.textContent = "Saved!";
+            setTimeout(function(){ msg.textContent = ""; }, 2500);
+        });
 
         const CATEGORY_IMAGES = {
             "condoms": "images/condoms/Durex-Extra-Thin-Condom-3s-Pack.avif",
