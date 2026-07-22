@@ -262,6 +262,8 @@ body {
     font-weight: 500;
     cursor: pointer;
     background-color: #ffffff;
+    color: #111111;
+    text-decoration: none;
 }
 .dropdown-item:hover {
     background-color: #f0f0f0;
@@ -270,6 +272,7 @@ body {
     font-size: 1.1rem;
     width: 24px;
     text-align: center;
+    color: #111111;
 }
 .dropdown-badge {
     margin-left: auto;
