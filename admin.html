@@ -6,6 +6,10 @@
     <title>Condomart | Admin Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
+    <!-- Firebase SDK for cloud orders -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
     <style>
         .admin-wrap { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .admin-stats { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
@@ -310,11 +314,39 @@
         const ADMIN_PASS = "admin123";
         const STATUSES = ["Pending", "Shipped", "Delivered", "Cancelled"];
 
-        function loadOrders() {
-            try { return JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY)) || []; }
-            catch (e) { return []; }
+        let FIREBASE_ORDERS = [];
+
+        function initOrdersSync() {
+            if (typeof db === "undefined") return;
+            db.ref("orders").on("value", function(snapshot) {
+                var data = snapshot.val();
+                FIREBASE_ORDERS = data ? Object.values(data) : [];
+                renderOrders();
+                renderStats();
+            });
         }
-        function saveOrders(orders) { localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders)); }
+
+        function loadOrders() {
+            return FIREBASE_ORDERS;
+        }
+
+        function saveOrders(orders) {
+            if (typeof db !== "undefined") {
+                var map = {};
+                orders.forEach(function(o) { map[o.id] = o; });
+                db.ref("orders").set(map);
+            } else {
+                localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
+            }
+        }
+
+        function clearAllOrders() {
+            if (typeof db !== "undefined") {
+                db.ref("orders").remove();
+            } else {
+                localStorage.removeItem(ORDERS_STORAGE_KEY);
+            }
+        }
         function loadProducts() {
             try { return JSON.parse(localStorage.getItem(PRODUCTS_STORAGE_KEY)) || []; }
             catch (e) { return []; }
@@ -941,14 +973,18 @@
             if (!btn) return;
             const oid = btn.getAttribute("data-order");
             const status = btn.getAttribute("data-status");
-            let orders = loadOrders();
-            const idx = orders.findIndex(o => o.id === oid);
-            if (idx >= 0) { orders[idx].status = status; saveOrders(orders); renderOrders(); renderStats(); }
+            if (typeof db !== "undefined") {
+                db.ref("orders/" + oid + "/status").set(status);
+            } else {
+                let orders = loadOrders();
+                const idx = orders.findIndex(o => o.id === oid);
+                if (idx >= 0) { orders[idx].status = status; saveOrders(orders); }
+            }
         });
 
         document.getElementById("adminClear").addEventListener("click", () => {
             if (confirm("Clear all orders? This cannot be undone.")) {
-                localStorage.removeItem(ORDERS_STORAGE_KEY);
+                clearAllOrders();
                 renderAdmin();
             }
         });
@@ -959,7 +995,7 @@
         const loginForm = document.getElementById("adminLoginForm");
         const logoutBtn = document.getElementById("adminLogout");
 
-        function showContent() { loginEl.style.display = "none"; contentEl.style.display = "block"; renderAdmin(); }
+        function showContent() { loginEl.style.display = "none"; contentEl.style.display = "block"; initOrdersSync(); renderAdmin(); }
         function showLogin() { loginEl.style.display = "flex"; contentEl.style.display = "none"; }
 
         loginForm.addEventListener("submit", (e) => {
@@ -985,7 +1021,6 @@
             showLogin();
         }
         window.addEventListener("storage", renderAdmin);
-        setInterval(() => { if (localStorage.getItem(ADMIN_SESSION_KEY) === "1") renderAdmin(); }, 5000);
     </script>
 </body>
 </html>
