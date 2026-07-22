@@ -2022,34 +2022,24 @@ let cartState = {
 
 // Order persistence layer for admin panel
 const ORDERS_STORAGE_KEY = "condomart_orders";
-let FIREBASE_ORDERS = [];
-
-function initOrdersSync() {
-    if (typeof db === "undefined") return;
-    db.ref("orders").on("value", function(snapshot) {
-        var data = snapshot.val();
-        FIREBASE_ORDERS = data ? Object.values(data) : [];
-    });
-}
 
 function loadOrders() {
-    return FIREBASE_ORDERS;
+    try {
+        return JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY)) || [];
+    } catch (e) {
+        return [];
+    }
 }
 
 function saveOrder(order) {
-    if (typeof db !== "undefined") {
-        db.ref("orders/" + order.id).set(order);
-    } else {
-        var orders = JSON.parse(localStorage.getItem(ORDERS_STORAGE_KEY) || "[]");
-        orders.push(order);
-        localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
-    }
+    const orders = loadOrders();
+    orders.push(order);
+    localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(orders));
 }
 
 // Initial DOM Execution Context Registration
 document.addEventListener("DOMContentLoaded", () => {
     PRODUCT_CATALOGUE = loadProducts();
-    initOrdersSync();
     initAppNavigation();
     initCatalogView(PRODUCT_CATALOGUE);
     initInteractiveSearch();
