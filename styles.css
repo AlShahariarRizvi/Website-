@@ -16,6 +16,7 @@
     --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.05);
+    --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
 }
@@ -218,6 +219,72 @@ body {
 }
 .utility-link:hover { color: var(--color-secondary); }
 .utility-link i { font-size: 1.3rem; }
+
+/* Three-Dot Mobile Menu (hidden on desktop) */
+.three-dot-wrapper {
+    display: none;
+    position: relative;
+}
+.three-dot-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #000000;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 4px;
+}
+.three-dot-btn:hover { background-color: rgba(0,0,0,0.05); }
+
+.three-dot-dropdown {
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    min-width: 200px;
+    z-index: 9999;
+    padding: 8px 0;
+}
+.three-dot-dropdown.open {
+    display: block;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+.dropdown-item i {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+}
+.dropdown-badge {
+    margin-left: auto;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 50%;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+}
 
 /* Subtle Basket Badge Styling Configuration */
 .cart-icon-wrapper {
@@ -1228,6 +1295,8 @@ body {
     }
     .logo { order: 2; }
     .header-utilities { order: 3; }
+    .header-utilities .utility-link { display: none; }
+    .three-dot-wrapper { display: flex; }
     .search-container {
         order: 4;
         width: 100%;

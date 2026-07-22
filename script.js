@@ -2003,10 +2003,15 @@ function toggleWishlist(id) {
 }
 function renderWishlistBadge() {
     const badge = document.getElementById("wishlistBadge");
+    const mobileBadge = document.getElementById("mobileWishlistBadge");
     if (!badge) return;
     const count = loadWishlist().length;
     badge.textContent = count;
     badge.style.display = count > 0 ? "flex" : "none";
+    if (mobileBadge) {
+        mobileBadge.textContent = count;
+        mobileBadge.style.display = count > 0 ? "flex" : "none";
+    }
 }
 
 // Application Global Reactive State Layout
@@ -2198,6 +2203,33 @@ function initAppNavigation() {
             icon.className = "fas fa-bars";
         }
     });
+
+    // Three-Dot Mobile Dropdown Toggle
+    const threeDotBtn = document.getElementById("threeDotBtn");
+    const threeDotDropdown = document.getElementById("threeDotDropdown");
+    if (threeDotBtn && threeDotDropdown) {
+        threeDotBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = threeDotDropdown.classList.toggle("open");
+            threeDotBtn.setAttribute("aria-expanded", isOpen);
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!threeDotDropdown.contains(e.target) && e.target !== threeDotBtn && !threeDotBtn.contains(e.target)) {
+                threeDotDropdown.classList.remove("open");
+                threeDotBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        // Mobile dropdown utility buttons trigger same actions as header utilities
+        const mobileAccountBtn = document.getElementById("mobileAccountBtn");
+        const mobileWishlistBtn = document.getElementById("mobileWishlistBtn");
+        const mobileCartBtn = document.getElementById("mobileCartBtn");
+        if (mobileAccountBtn) mobileAccountBtn.addEventListener("click", () => { document.getElementById("accountButton").click(); threeDotDropdown.classList.remove("open"); });
+        if (mobileWishlistBtn) mobileWishlistBtn.addEventListener("click", () => { document.getElementById("wishlistButton").click(); threeDotDropdown.classList.remove("open"); });
+        if (mobileCartBtn) mobileCartBtn.addEventListener("click", () => { document.getElementById("cartButton").click(); threeDotDropdown.classList.remove("open"); });
+    }
 }
 
 /**
@@ -2533,6 +2565,7 @@ function initCartPanel() {
 function renderCart() {
     const body = document.getElementById("cartPanelBody");
     const badge = document.getElementById("cartBadge");
+    const mobileBadge = document.getElementById("mobileCartBadge");
     const link = document.getElementById("cartButton");
     const totalEl = document.getElementById("cartTotal");
 
@@ -2541,6 +2574,7 @@ function renderCart() {
     const totalPrice = ids.reduce((sum, id) => sum + cartState.items[id].qty * cartState.items[id].product.price, 0);
 
     if (badge) badge.textContent = totalQty;
+    if (mobileBadge) mobileBadge.textContent = totalQty;
     if (link) link.setAttribute("aria-label", `Shopping Basket, ${totalQty} items`);
     if (totalEl) totalEl.textContent = "à§³ " + totalPrice;
 
